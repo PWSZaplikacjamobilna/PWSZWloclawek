@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +42,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ListView listView = (ListView) findViewById(R.id.listView13);
+        String[] values = new String[] { "Komunikat dla studentów 1",
+                "Komunikat dla studentów 2",
+                "Komunikat dla studentów 3",
+                "Komunikat dla studentów 4",
+                "Komunikat dla studentów 5",
+                "Komunikat dla studentów 6",
+                "Komunikat dla studentów 7",
+                "Komunikat dla studentów 8"
+        };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        listView.setAdapter(adapter);
     }
 
     @Override
