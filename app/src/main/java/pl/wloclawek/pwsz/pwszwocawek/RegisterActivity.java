@@ -3,19 +3,17 @@ package pl.wloclawek.pwsz.pwszwocawek;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,13 +23,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class RegisterActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -59,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         // Set up the login form.
         mNumerView = (AutoCompleteTextView) findViewById(R.id.numer);
 
@@ -77,14 +76,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        Button mEmailRegisterButton = (Button) findViewById(R.id.register_button);
-        mEmailRegisterButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-               startActivity(intent);
-            }
-        });
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +85,60 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        Spinner spinnerKierunek = (Spinner) findViewById(R.id.spinnerKierunek);
+        Spinner spinnerRok = (Spinner) findViewById(R.id.spinnerRok);
+        Spinner spinnerGrupa = (Spinner) findViewById(R.id.spinnerGrupa);
+        Spinner spinnerPromotor= (Spinner) findViewById(R.id.spinnerPromotor);
+        // Initializing a String Array
+        String[] kierunek = new String[]{
+                "Kierunek",
+                "Inforamtyka",
+                "Zarządzanie",
+        };
+        String[] rok = new String[]{
+                "Rok",
+                "Inforamtyka",
+                "Zarządzanie",
+        };
+        String[] grupa = new String[]{
+                "Grupa",
+                "A",
+                "B",
+        };
+        String[] promotor = new String[]{
+                "Promotor",
+                "dr inz. Adam Kowalski",
+
+        };
+
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> spinnerArrayAdapterK = new ArrayAdapter<String>(
+                this,R.layout.spinner_item,kierunek
+        );
+        spinnerArrayAdapterK.setDropDownViewResource(R.layout.spinner_item);
+        spinnerKierunek.setAdapter(spinnerArrayAdapterK);
+
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> spinnerArrayAdapterR = new ArrayAdapter<String>(
+                this,R.layout.spinner_item,rok
+        );
+        spinnerArrayAdapterR.setDropDownViewResource(R.layout.spinner_item);
+        spinnerRok.setAdapter(spinnerArrayAdapterR);
+
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> spinnerArrayAdapterG= new ArrayAdapter<String>(
+                this,R.layout.spinner_item,grupa
+        );
+        spinnerArrayAdapterG.setDropDownViewResource(R.layout.spinner_item);
+        spinnerGrupa.setAdapter(spinnerArrayAdapterG);
+
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> spinnerArrayAdapterP = new ArrayAdapter<String>(
+                this,R.layout.spinner_item,promotor
+        );
+        spinnerArrayAdapterP.setDropDownViewResource(R.layout.spinner_item);
+        spinnerPromotor.setAdapter(spinnerArrayAdapterP);
     }
 
 
@@ -228,7 +273,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
+                new ArrayAdapter<>(RegisterActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mNumerView.setAdapter(adapter);
@@ -289,7 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

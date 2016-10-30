@@ -10,10 +10,24 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Numer indeksu</string>
     <string name="prompt_password">Hasło</string>
+    <string name="prompt_password2">Powtórz hasło</string>
+    <string name="kierunek">Kierunek</string>
     <string name="action_sign_in">Zaloguj</string>
+    <string name="register">Zarejestruj</string>
     <string name="action_sign_in_short">Logowanie</string>
     <string name="error_invalid_email">Numer indesku jest nieporpawny</string>
     <string name="error_invalid_password">Hasło jest za krótkie</string>
     <string name="error_incorrect_password">Hasło jest nie poprawne</string>
     <string name="error_field_required">To pole jest wymagane</string>
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 </resources>
