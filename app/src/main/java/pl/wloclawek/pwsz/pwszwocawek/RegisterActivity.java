@@ -98,8 +98,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         };
         String[] rok = new String[]{
                 "Rok",
-                "Inforamtyka",
-                "Zarządzanie",
+                "I",
+                "II",
         };
         String[] grupa = new String[]{
                 "Grupa",
