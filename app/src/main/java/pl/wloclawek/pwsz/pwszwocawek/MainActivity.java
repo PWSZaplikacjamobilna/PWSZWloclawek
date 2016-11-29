@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,9 +16,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String METHOD_NAME = "Logowanie";
+//  private static final String METHOD_NAME = "HelloWorld";
+
+    private static final String NAMESPACE = "http://localhost:1320/";
+//  private static final String NAMESPACE = "http://tempuri.org";
+
+    private static final String URL = "http://localhost:1320/Service1.svc";
+//  private static final String URL = "http://192.168.0.2:8080/webservice1  /Service1.asmx";
+
+    final String SOAP_ACTION = "http://localhost:1320/IService1/Logowanie";
+    //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +123,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_planbudynkow) {
+
 
         }
 

@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,6 +27,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +46,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+    private static final String METHOD_NAME = "Logowanie";
+//  private static final String METHOD_NAME = "HelloWorld";
+
+    private static final String NAMESPACE = "http://tempuri.org/";
+//  private static final String NAMESPACE = "http://tempuri.org";
+
+    private static final String URL = "http://77.245.247.158:2196/Service1.svc";
+//  private static final String URL = "http://192.168.0.2:8080/webservice1  /Service1.asmx";
+
+    final String SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
+    //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
+
+
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -45,6 +67,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
     };
+
+
+    TextView tv;
+    StringBuilder sb;
+    private XmlSerializer writer;
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -262,13 +290,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
+
+                SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+                request.addProperty("login", "8550");
+                request.addProperty("haslo", "123456");
+
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                        SoapEnvelope.VER11);
+                envelope.dotNet = true;
+                envelope.setOutputSoapObject(request);
+
+
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                SoapPrimitive result = (SoapPrimitive)envelope.getResponse();
+
+                //to get the data
+                String resultData = result.toString();
+                // 0 is the first object of data
+
+                Log.i("TAG", "OK ------------------------------------------------------- " + resultData);
+
+
+
+            } catch (Exception e) {
+                Log.i("TAG", "ERR ------------------------------------------------------- " + e);
+
+
             }
+
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
