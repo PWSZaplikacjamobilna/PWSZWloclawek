@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,24 +27,23 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RegisterActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class RegisterActivity extends AppCompatActivity {
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
+
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
+
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -54,6 +54,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
+    Spinner spinnerKierunek;
+    Spinner spinnerRok;
+    Spinner spinnerPromotor;
+    Spinner spinnerGrupaW;
+    Spinner spinnerGrupaL;
+    Spinner spinnerSpec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +93,12 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        Spinner spinnerKierunek = (Spinner) findViewById(R.id.spinnerKierunek);
-        Spinner spinnerRok = (Spinner) findViewById(R.id.spinnerRok);
-        Spinner spinnerGrupa = (Spinner) findViewById(R.id.spinnerGrupa);
-        Spinner spinnerPromotor= (Spinner) findViewById(R.id.spinnerPromotor);
+         spinnerKierunek = (Spinner) findViewById(R.id.spinnerKierunek);
+         spinnerRok = (Spinner) findViewById(R.id.spinnerRok);
+         spinnerGrupaW = (Spinner) findViewById(R.id.spinnerGrupaWykladowa);
+         spinnerGrupaL = (Spinner) findViewById(R.id.spinnerGrupaLab);
+         spinnerSpec  = (Spinner) findViewById(R.id.spinnerSpecjalnosc);
+         spinnerPromotor= (Spinner) findViewById(R.id.spinnerPromotor);
         // Initializing a String Array
         String[] kierunek = new String[]{
                 "Kierunek",
@@ -131,7 +140,14 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                 this,R.layout.spinner_item,grupa
         );
         spinnerArrayAdapterG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerGrupa.setAdapter(spinnerArrayAdapterG);
+        spinnerGrupaL.setAdapter(spinnerArrayAdapterG);
+
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> spinnerArrayAdapterGW= new ArrayAdapter<String>(
+                this,R.layout.spinner_item,grupa
+        );
+        spinnerArrayAdapterG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGrupaW.setAdapter(spinnerArrayAdapterG);
 
         // Initializing an ArrayAdapter
         ArrayAdapter<String> spinnerArrayAdapterP = new ArrayAdapter<String>(
@@ -139,6 +155,9 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         );
         spinnerArrayAdapterP.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPromotor.setAdapter(spinnerArrayAdapterP);
+
+         GetDataTask data = new GetDataTask();
+         data.execute();
     }
 
 
@@ -236,64 +255,266 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         }
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(RegisterActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mNumerView.setAdapter(adapter);
-    }
 
 
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+    public class GetDataTask extends AsyncTask<Void, Void, Boolean> {
+
+        private   String METHOD_NAME = "RejstracjaDane2";
+//  private static final String METHOD_NAME = "HelloWorld";
+
+        private  final String NAMESPACE = "http://tempuri.org/";
+//  private static final String NAMESPACE = "http://tempuri.org";
+
+        private  final String URL = "http://77.245.247.158:2196/Service1.svc";
+//  private static final String URL = "http://192.168.0.2:8080/webservice1  /Service1.asmx";
+
+        String SOAP_ACTION = "http://tempuri.org/IService1/RejstracjaDane2";
+        //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
+        String resultData;
+        String[] kierunkiarray;
+        String[] rokarray;
+        String[] promotorarray;
+        String[] specjalnoscarray;
+        String[]  grupalrray;
+        String[]  grupawrray;
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+
+                SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+
+
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                        SoapEnvelope.VER11);
+                envelope.dotNet = true;
+                envelope.setOutputSoapObject(request);
+
+                class Kierunek{
+                    String id;
+                    String kierunek;
+                }
+                class Promotor{
+                    String id;
+                    String promotor;
+                }
+                class Rok{
+                    String id;
+                    String rok;
+                }
+                class Spec{
+                    String id;
+                    String specjalnosc;
+                }
+                class GrupaW{
+                    String id;
+                    String grupa;
+                }
+                class GrupaL{
+                    String id;
+                    String grupa;
+                }
+
+
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                SoapObject soap = (SoapObject) envelope.getResponse();
+
+                SoapObject soapGrupaL= (SoapObject)soap.getProperty(0);
+                SoapObject soapGrupaW = (SoapObject)soap.getProperty(1);
+                SoapObject soapKierunki = (SoapObject)soap.getProperty(2);
+                SoapObject soapPromotor = (SoapObject)soap.getProperty(3);
+                SoapObject soapRok = (SoapObject)soap.getProperty(4);
+                SoapObject soapSpecjalnosc = (SoapObject)soap.getProperty(5);
+
+
+                Kierunek[] kierunki = new Kierunek[soapKierunki.getPropertyCount()];
+                Log.e("TAG","-------KIER"+soapKierunki.getPropertyCount());
+                for (int i = 0; i < kierunki.length; i++) {
+                    SoapObject pii = (SoapObject)soapKierunki.getProperty(i);
+                    Kierunek kierunek = new Kierunek();
+                    kierunek.id = pii.getProperty(0).toString();
+                    kierunek.kierunek = pii.getProperty(1).toString();
+                    kierunki[i] = kierunek;
+                }
+
+                Promotor[] promotors = new Promotor[soapPromotor.getPropertyCount()];
+                Log.e("TAG","-------PRO"+soapPromotor.getPropertyCount());
+                for (int i = 0; i < promotors.length; i++) {
+                    SoapObject pii = (SoapObject)soapPromotor.getProperty(i);
+                    Promotor promotor = new Promotor();
+                    promotor.id = pii.getProperty(0).toString();
+                    promotor.promotor = pii.getProperty(1).toString();
+                    promotors[i] = promotor;
+                }
+                Rok[] roks = new Rok[soapRok.getPropertyCount()];
+                Log.e("TAG","-------ROK"+soapRok.getPropertyCount());
+                for (int i = 0; i < roks.length; i++) {
+                    SoapObject pii = (SoapObject)soapRok.getProperty(i);
+                    Rok rok = new Rok();
+                    rok.id = pii.getProperty(0).toString();
+                    rok.rok = pii.getProperty(1).toString();
+                    roks[i] = rok;
+                }
+
+                Spec[] specs = new Spec[soapSpecjalnosc.getPropertyCount()];
+                Log.e("TAG","-------SPEC"+soapSpecjalnosc.getPropertyCount());
+                for (int i = 0; i < specs.length; i++) {
+                    SoapObject pii = (SoapObject)soapSpecjalnosc.getProperty(i);
+                    Spec spec = new Spec();
+                    spec.id = pii.getProperty(0).toString();
+                    spec.specjalnosc = pii.getProperty(1).toString();
+                    specs[i] = spec;
+                }
+                GrupaW[] grupyW = new GrupaW[soapGrupaW.getPropertyCount()];
+                Log.e("TAG","-------GRUPAW"+soapGrupaW.getPropertyCount());
+                for (int i = 0; i < grupyW.length; i++) {
+                    SoapObject pii = (SoapObject)soapGrupaW.getProperty(i);
+                    GrupaW spec = new GrupaW();
+                    spec.id = pii.getProperty(1).toString();
+                    spec.grupa = pii.getProperty(0).toString();
+                    grupyW[i] = spec;
+                }
+                GrupaL[] grupyL = new GrupaL[soapGrupaL.getPropertyCount()];
+                Log.e("TAG","-------GRUPAL"+soapGrupaL.getPropertyCount());
+                for (int i = 0; i < grupyL.length; i++) {
+                    SoapObject pii = (SoapObject)soapGrupaL.getProperty(i);
+                    GrupaL spec = new GrupaL();
+                    spec.id = pii.getProperty(1).toString();
+                    spec.grupa = pii.getProperty(0).toString();
+                    grupyL[i] = spec;
+                }
+
+                Log.e("TAG","-------LISTA");
+                for (Spec k:
+                        specs) {
+                    Log.e("TAG","-------"+k.specjalnosc);
+
+                }
+
+                kierunkiarray = new String[kierunki.length+1];
+                kierunkiarray[0] = "Wybierz kierunek ...";
+                int index = 1;
+                for (Kierunek k : kierunki) {
+
+                    kierunkiarray[index] = k.kierunek;
+                    index++;
+                }
+                promotorarray = new String[promotors.length+1];
+                promotorarray[0] = "Wybierz promotora ...";
+                 index = 1;
+                for (Promotor k : promotors) {
+                    promotorarray[index] = k.promotor;
+                    index++;
+                }
+                specjalnoscarray = new String[specs.length+1];
+                specjalnoscarray[0] = "Wybierz specjalność ...";
+                index = 1;
+                for (Spec k : specs) {
+                    specjalnoscarray[index] = k.specjalnosc;
+                    index++;
+                }
+                rokarray = new String[roks.length+1];
+                rokarray[0] = "Wybierz rok studiów ...";
+                index = 1;
+                for (Rok k : roks) {
+                    rokarray[index] = k.rok;
+                    index++;
+                }
+
+                grupawrray = new String[grupyW.length+1];
+                grupawrray[0] = "Wybierz grupę wykładową...";
+                index = 1;
+                for (GrupaW k : grupyW) {
+                    grupawrray[index] = k.grupa;
+                    index++;
+                }
+                grupalrray = new String[grupyL.length+1];
+                grupalrray[0] = "Wybierz grupę laboratoryjną...";
+                index = 1;
+                for (GrupaL k : grupyL) {
+                    grupalrray[index] = k.grupa;
+                    index++;
+                }
+
+
+
+                //to get the data
+                //resultData = result.toString();
+                // 0 is the first object of data
+
+                Log.i("TAG", "OK ------------------------------------------------------- " + resultData);
+
+
+
+            } catch (Exception e) {
+                Log.i("TAG", "ERR ------------------------------------------------------- " + e);
+
+
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            ArrayAdapter<String> spinnerArrayAdapterK = new ArrayAdapter<String>(
+                    RegisterActivity.this,R.layout.spinner_item,kierunkiarray
+            );
+            spinnerArrayAdapterK.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerKierunek.setAdapter(spinnerArrayAdapterK);
+
+
+            ArrayAdapter<String> spinnerArrayAdapterS = new ArrayAdapter<String>(
+                    RegisterActivity.this,R.layout.spinner_item,specjalnoscarray
+            );
+            spinnerArrayAdapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerSpec.setAdapter(spinnerArrayAdapterS);
+
+
+            ArrayAdapter<String> spinnerArrayAdapterA = new ArrayAdapter<String>(
+                    RegisterActivity.this,R.layout.spinner_item,promotorarray
+            );
+            spinnerArrayAdapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerPromotor.setAdapter(spinnerArrayAdapterA);
+
+
+            ArrayAdapter<String> spinnerArrayAdapterR = new ArrayAdapter<String>(
+                    RegisterActivity.this,R.layout.spinner_item,rokarray
+            );
+            spinnerArrayAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerRok.setAdapter(spinnerArrayAdapterR);
+
+            ArrayAdapter<String> spinnerArrayAdapterGW = new ArrayAdapter<String>(
+                    RegisterActivity.this,R.layout.spinner_item,grupawrray
+            );
+            spinnerArrayAdapterGW.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerGrupaW.setAdapter(spinnerArrayAdapterGW);
+
+            ArrayAdapter<String> spinnerArrayAdapterGL = new ArrayAdapter<String>(
+                    RegisterActivity.this,R.layout.spinner_item,grupalrray
+            );
+            spinnerArrayAdapterGL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerGrupaL.setAdapter(spinnerArrayAdapterGL);
+
+
+
+
+        }
+
+        @Override
+        protected void onCancelled() {
+
+        }
+    }
+
+
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
@@ -308,20 +529,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
 
             // TODO: register the new account here.
 

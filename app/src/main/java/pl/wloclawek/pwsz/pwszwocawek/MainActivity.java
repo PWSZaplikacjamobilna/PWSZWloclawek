@@ -1,7 +1,10 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -38,15 +41,17 @@ public class MainActivity extends AppCompatActivity
 
     final String SOAP_ACTION = "http://localhost:1320/IService1/Logowanie";
     //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
+    SharedPreferences sharedPref;
+
+    String cookieFromPref;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Toast.makeText(this, "Main START",
-                Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPref = getSharedPreferences("tajnaPWSZ", MODE_PRIVATE); ;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -81,6 +86,10 @@ public class MainActivity extends AppCompatActivity
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
         listView.setAdapter(adapter);
+
+        cookieFromPref = sharedPref.getString("tajneCookie","null");
+        Toast.makeText(this, cookieFromPref,
+                Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -121,7 +130,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_wyloguj) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("tajneCookie", "null");
+            editor.commit();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_planbudynkow) {

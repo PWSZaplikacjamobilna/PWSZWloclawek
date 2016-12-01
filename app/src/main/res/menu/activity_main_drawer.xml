@@ -31,9 +31,15 @@
             android:icon="@drawable/ic_menu_kontakt"
             android:title="Kontakt" />
         <item
-            android:id="@+id/nav_ustawienia"
-            android:icon="@drawable/ic_menu_ustawienia"
-            android:title="Ustawienia" />
+        android:id="@+id/nav_ustawienia"
+        android:icon="@drawable/ic_menu_ustawienia"
+        android:title="Ustawienia" />
+
+        <item
+            android:id="@+id/nav_wyloguj"
+            android:icon="@drawable/ic_wyloguj"
+            android:title="Wyloguj" />
+
     </group>
 
 

@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity  {
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
-    private static final String METHOD_NAME = "Logowanie";
+    private static  String METHOD_NAME = "Logowanie";
 //  private static final String METHOD_NAME = "HelloWorld";
 
     private static final String NAMESPACE = "http://tempuri.org/";
@@ -57,13 +58,10 @@ public class LoginActivity extends AppCompatActivity  {
     private static final String URL = "http://77.245.247.158:2196/Service1.svc";
 //  private static final String URL = "http://192.168.0.2:8080/webservice1  /Service1.asmx";
 
-    final String SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
+     String SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
     //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
 
 
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
 
 
     TextView tv;
@@ -81,12 +79,14 @@ public class LoginActivity extends AppCompatActivity  {
     private View mProgressView;
     private View mLoginFormView;
     SharedPreferences sharedPref;
+    String cookieFromPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
-         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+         sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE); ;;
         // Set up the login form.
         mNumerView = (AutoCompleteTextView) findViewById(R.id.numer);
 
@@ -121,6 +121,16 @@ public class LoginActivity extends AppCompatActivity  {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
+        cookieFromPref = sharedPref.getString("tajneCookie","null");;
+        Toast.makeText(this, cookieFromPref,
+                Toast.LENGTH_LONG).show();
+        Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
+        if(!cookieFromPref.equals("null")){
+            mAuthTask = new UserLoginTask(cookieFromPref);
+            mAuthTask.execute((Void) null);
+        }
     }
 
 
@@ -228,10 +238,18 @@ public class LoginActivity extends AppCompatActivity  {
         private final String mPassword;
            Boolean success =false;
         String cookie = "false";
+        Boolean authcookie = false;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
+
+        }
+        UserLoginTask(String cookie) {
+           this.cookie = cookie;
+            authcookie = true;
+            mEmail = "null";
+            mPassword = "null";
 
         }
         @Override
@@ -241,14 +259,27 @@ public class LoginActivity extends AppCompatActivity  {
         @Override
         protected Boolean doInBackground(Void... params) {
 
-
+            if(authcookie){
+                METHOD_NAME ="LogowanieCookie";
+                SOAP_ACTION = "http://tempuri.org/IService1/LogowanieCookie";
+            }else
+            {
+                METHOD_NAME ="Logowanie";
+                 SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
+            }
             String resultData = "false";
             try {
 
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+                if(!authcookie) {
+                    request.addProperty("login", mEmail);
+                    request.addProperty("haslo", mPassword);
+                }else{
 
-                request.addProperty("login",mEmail );
-                request.addProperty("haslo", mPassword);
+                    request.addProperty("cookie", cookie);
+                }
+
+
 
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                         SoapEnvelope.VER11);
@@ -281,7 +312,7 @@ public class LoginActivity extends AppCompatActivity  {
                 return false;
             }else{
 
-                cookie = resultData;
+                cookie = resultData.toString();
 
                 return true;
             }
@@ -293,8 +324,11 @@ public class LoginActivity extends AppCompatActivity  {
 
             mAuthTask = null;
             if (success) {
+                Toast.makeText(LoginActivity.this, cookie,
+                        Toast.LENGTH_LONG).show();
+
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.cookie), cookie);
+                editor.putString("tajneCookie", cookie);
                 editor.commit();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

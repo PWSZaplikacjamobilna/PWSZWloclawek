@@ -20,7 +20,7 @@
     <string name="error_incorrect_password">Hasło jest nie poprawne</string>
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_incorrect_passwordOrpassword">Hasło lub login jest nie poprawne</string>
-    <string name="cookie">empty</string>
+    <string name="cookie">null</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
