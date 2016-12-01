@@ -84,6 +84,7 @@
 
 
             <Spinner
+
                 android:paddingTop="20dp"
                 android:id="@+id/spinnerKierunek"
                 style="@style/Base.Widget.AppCompat.Spinner.Underlined"
@@ -119,7 +120,7 @@
 
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/numer_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

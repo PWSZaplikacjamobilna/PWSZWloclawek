@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.numer_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,28 +116,28 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         ArrayAdapter<String> spinnerArrayAdapterK = new ArrayAdapter<String>(
                 this,R.layout.spinner_item,kierunek
         );
-        spinnerArrayAdapterK.setDropDownViewResource(R.layout.spinner_item);
+        spinnerArrayAdapterK.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKierunek.setAdapter(spinnerArrayAdapterK);
 
         // Initializing an ArrayAdapter
         ArrayAdapter<String> spinnerArrayAdapterR = new ArrayAdapter<String>(
                 this,R.layout.spinner_item,rok
         );
-        spinnerArrayAdapterR.setDropDownViewResource(R.layout.spinner_item);
+        spinnerArrayAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRok.setAdapter(spinnerArrayAdapterR);
 
         // Initializing an ArrayAdapter
         ArrayAdapter<String> spinnerArrayAdapterG= new ArrayAdapter<String>(
                 this,R.layout.spinner_item,grupa
         );
-        spinnerArrayAdapterG.setDropDownViewResource(R.layout.spinner_item);
+        spinnerArrayAdapterG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGrupa.setAdapter(spinnerArrayAdapterG);
 
         // Initializing an ArrayAdapter
         ArrayAdapter<String> spinnerArrayAdapterP = new ArrayAdapter<String>(
                 this,R.layout.spinner_item,promotor
         );
-        spinnerArrayAdapterP.setDropDownViewResource(R.layout.spinner_item);
+        spinnerArrayAdapterP.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPromotor.setAdapter(spinnerArrayAdapterP);
     }
 
