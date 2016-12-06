@@ -6,6 +6,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -86,7 +88,7 @@ public class LoginActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-         sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE); ;;
+         sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         // Set up the login form.
         mNumerView = (AutoCompleteTextView) findViewById(R.id.numer);
 
@@ -123,10 +125,17 @@ public class LoginActivity extends AppCompatActivity  {
         mProgressView = findViewById(R.id.login_progress);
 
 
-        cookieFromPref = sharedPref.getString("tajneCookie","null");;
+        cookieFromPref = sharedPref.getString("tajneCookie","null");
         Toast.makeText(this, cookieFromPref,
                 Toast.LENGTH_LONG).show();
         Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
+        if(!isOnline()){
+
+            Toast.makeText(this, "Brak połączenia z internetem !",
+                    Toast.LENGTH_LONG).show();
+        }
+
+
         if(!cookieFromPref.equals("null")){
             mAuthTask = new UserLoginTask(cookieFromPref);
             mAuthTask.execute((Void) null);
@@ -134,7 +143,12 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
 
-
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -274,9 +288,12 @@ public class LoginActivity extends AppCompatActivity  {
                 if(!authcookie) {
                     request.addProperty("login", mEmail);
                     request.addProperty("haslo", mPassword);
-                }else{
+                }else if  (cookie != null){
 
                     request.addProperty("cookie", cookie);
+                }else{
+                    return true;
+
                 }
 
 

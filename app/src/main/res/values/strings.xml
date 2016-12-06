@@ -20,7 +20,16 @@
     <string name="error_incorrect_password">Hasło jest nie poprawne</string>
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_incorrect_passwordOrpassword">Hasło lub login jest nie poprawne</string>
-    <string name="cookie">null</string>
+    <string name="error_takiesame">Podane hasła nie są identyczne</string>
+    <string name="ladowanie">Ładowanie ...</string>
+    <string name="wybGrupaL">Wybierz grupę laboratoryjną...</string>
+    <string name="wybGrupaW">Wybierz grupę wykładową...</string>
+    <string name="wybPromo">Wybierz promotora ...</string>
+    <string name="wybKier">Wybierz kierunek ...</string>
+    <string name="wybSpec">Wybierz specjalność ...</string>
+    <string name="wybRok">Wybierz rok studiów ...</string>
+
+
 
     <string-array name="planets_array">
         <item>Mercury</item>
