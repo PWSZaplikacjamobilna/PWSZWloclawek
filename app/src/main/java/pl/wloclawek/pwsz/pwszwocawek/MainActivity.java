@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         ListView listView = (ListView) findViewById(R.id.listView13);
-        String[] values = new String[] { "Komunikat dla studentów 1s",
+        String[] values = new String[] { "Komunikat dla studentów 1",
                 "Komunikat dla studentów 2",
                 "Komunikat dla studentów 3",
                 "Komunikat dla studentów 4",
