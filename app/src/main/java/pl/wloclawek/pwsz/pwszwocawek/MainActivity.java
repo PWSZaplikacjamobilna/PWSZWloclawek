@@ -1,29 +1,30 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity
     SharedPreferences sharedPref;
 
     String cookieFromPref;
-
+    ListView listView;
 
 
     @Override
@@ -73,23 +74,21 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ListView listView = (ListView) findViewById(R.id.listView13);
-        String[] values = new String[] { "Komunikat dla studentów 1",
-                "Komunikat dla studentów 2",
-                "Komunikat dla studentów 3",
-                "Komunikat dla studentów 4",
-                "Komunikat dla studentów 5",
-                "Komunikat dla studentów 6",
-                "Komunikat dla studentów 7",
-                "Komunikat dla studentów 8"
+         listView = (ListView) findViewById(R.id.listView13);
+        String[] values = new String[]{"Ładowanie ...",
+                "Ładowanie ...",
+                "Ładowanie ...",
+                "Ładowanie ...",
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
         listView.setAdapter(adapter);
 
-        cookieFromPref = sharedPref.getString("tajneCookie","null");
+        cookieFromPref = sharedPref.getString("tajneCookie", "null");
         Toast.makeText(this, cookieFromPref,
                 Toast.LENGTH_LONG).show();
+        NewsTask data = new NewsTask();
+        data.execute();
     }
 
     @Override
@@ -145,5 +144,90 @@ public class MainActivity extends AppCompatActivity
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public class NewsTask extends AsyncTask<Void, Void, Boolean> {
+
+
+
+        private static final int REQUEST_READ_CONTACTS = 0;
+        private   String METHOD_NAME = "NewsData";
+        private static final String NAMESPACE = "http://tempuri.org/";
+        private static final String URL = "http://77.245.247.158:2196/Service1.svc";
+        String SOAP_ACTION = "http://tempuri.org/IService1/NewsData";
+        String resultData;
+        String[] newsarray;
+        @Override
+        protected Boolean doInBackground(Void... params) {
+try {
+    SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+
+    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+            SoapEnvelope.VER11);
+    envelope.dotNet = true;
+    envelope.setOutputSoapObject(request);
+
+    class News {
+        String komunikat;
+    }
+
+    HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+    androidHttpTransport.call(SOAP_ACTION, envelope);
+    SoapObject soap = (SoapObject) envelope.getResponse();
+    Log.d("TAG", "-------PropertyCount" + soap.getPropertyCount());
+    Log.d("TAG", "-------AttributeCount" + soap.getAttributeCount());
+
+    News[] news = new News[soap.getPropertyCount()];
+    Log.d("TAG", "-------News" + soap.getPropertyCount());
+
+    for (int i = 0; i < news.length; i++) {
+        SoapObject pii = (SoapObject) soap.getProperty(i);
+        News new1 = new News();
+        new1.komunikat = pii.getProperty(0).toString();
+        Log.d("TAG", "-------News" + pii.getProperty(0).toString());
+        news[i] = new1;
+
+    }
+
+    newsarray = new String[news.length ];
+    int index = 0;
+    for (News k : news) {
+        newsarray[index] = "\r\n "+k.komunikat;
+        index++;
+    }
+
+}catch(Exception e){
+
+    Log.e("TAG",e.toString());
+}
+            return true;
+
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1, newsarray){
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent){
+                    // Get the Item from ListView
+                    View view = super.getView(position, convertView, parent);
+
+                    // Initialize a TextView for ListView each Item
+                    TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                    // Set the text color of TextView (ListView Item)
+                    tv.setTextColor(Color.DKGRAY);
+
+                    // Generate ListView Item using TextView
+                    return view;
+                }
+            };
+            listView.setAdapter(adapter);
+
+        }
+
+
     }
 }
