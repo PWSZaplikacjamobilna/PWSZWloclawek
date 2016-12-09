@@ -170,6 +170,7 @@ try {
 
     class News {
         String komunikat;
+
     }
 
     HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
