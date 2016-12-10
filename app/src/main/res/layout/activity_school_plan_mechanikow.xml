@@ -28,9 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:textColor="@color/textColorPrimary"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/basement"
-        android:onClick="clickbasement"/>
+        android:onClick="clickbasement"
+       />
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -61,7 +62,7 @@
         android:layout_below="@+id/basement"
         android:textColor="@color/textColorPrimary"
         android:layout_marginTop="1dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/groundfloor"
         android:onClick="clickgroundfloor"/>
 
@@ -94,7 +95,7 @@
         android:layout_height="40dp"
         android:textColor="@color/textColorPrimary"
         android:layout_below="@+id/groundfloor"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/Ifloor"
         android:onClick="clickIfloor"/>
@@ -128,7 +129,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Ifloor"
         android:textColor="@color/textColorPrimary"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/IIfloor"
         android:onClick="clickIIfloor"/>
@@ -162,7 +163,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/IIfloor"
         android:textColor="@color/textColorPrimary"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/IIIfloor"
         android:onClick="clickIIIfloor"/>
@@ -197,7 +198,7 @@
         android:layout_height="40dp"
         android:textColor="@color/textColorPrimary"
         android:layout_below="@+id/IIIfloor"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/IVfloor"
         android:onClick="clickIVfloor"/>

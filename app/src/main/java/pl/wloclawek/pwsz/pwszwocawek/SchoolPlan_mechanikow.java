@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ public class SchoolPlan_mechanikow extends Activity {
 
     CardView card_view,card_view2,card_view3,card_view4,card_view5,card_view6;
     ImageView imgbasement,imggroundfloor,imgIfloor,imgIIfloor,imgIIIfloor,imgIVfloor;
+    Button basement,groundfloor,Ifloor,IIfloor,IIIfloor,IVfloor;
    Integer imgsource;
     String text;
     @Override
@@ -52,6 +54,12 @@ public class SchoolPlan_mechanikow extends Activity {
         imgIIfloor=(ImageView)findViewById(R.id.imgIIfloor);
         imgIIIfloor=(ImageView)findViewById(R.id.imgIIIfloor);
         imgIVfloor=(ImageView)findViewById(R.id.imgIVfloor);
+        basement=(Button)findViewById(R.id.basement);
+        groundfloor=(Button)findViewById(R.id.groundfloor);
+        Ifloor=(Button)findViewById(R.id.Ifloor);
+        IIfloor=(Button)findViewById(R.id.IIfloor);
+        IIIfloor=(Button)findViewById(R.id.IIIfloor);
+        IVfloor=(Button)findViewById(R.id.IVfloor);
 
 
     }
@@ -65,6 +73,12 @@ public class SchoolPlan_mechanikow extends Activity {
         card_view6.setVisibility(View.GONE);
         Drawable drawable6 = getResources().getDrawable(R.drawable.piwnica);
         imgbasement.setImageDrawable(drawable6);
+        basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+        groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IVfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
 
     }
@@ -78,6 +92,12 @@ public class SchoolPlan_mechanikow extends Activity {
         card_view6.setVisibility(View.GONE);
         Drawable drawable5 = getResources().getDrawable(R.drawable.parter);
         imggroundfloor.setImageDrawable(drawable5);
+        basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+        Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IVfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     public void clickIfloor(View view) {
@@ -89,6 +109,12 @@ public class SchoolPlan_mechanikow extends Activity {
         card_view6.setVisibility(View.GONE);
         Drawable drawable4 = getResources().getDrawable(R.drawable.pierwsze);
         imgIfloor.setImageDrawable(drawable4);
+        basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+        IIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IVfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     public void clickIIfloor(View view) {
@@ -100,6 +126,12 @@ public class SchoolPlan_mechanikow extends Activity {
         card_view6.setVisibility(View.GONE);
         Drawable drawable3 = getResources().getDrawable(R.drawable.drugie);
         imgIIfloor.setImageDrawable(drawable3);
+        basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+        IIIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IVfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     public void clickIIIfloor(View view) {
@@ -111,6 +143,12 @@ public class SchoolPlan_mechanikow extends Activity {
         card_view6.setVisibility(View.GONE);
         Drawable drawable2 = getResources().getDrawable(R.drawable.trzecie);
         imgIIIfloor.setImageDrawable(drawable2);
+        basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+        IVfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     public void clickIVfloor(View view) {
@@ -122,6 +160,12 @@ public class SchoolPlan_mechanikow extends Activity {
         card_view6.setVisibility(View.VISIBLE);
         Drawable drawable = getResources().getDrawable(R.drawable.czwarte);
         imgIVfloor.setImageDrawable(drawable);
+        basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IIIfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        IVfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
 
     }
 

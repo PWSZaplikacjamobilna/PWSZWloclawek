@@ -20,7 +20,7 @@
 
     <style name="TabWidgetTheme" parent="AppTheme">
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
-        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorDivider</item>
     </style>
 
 
