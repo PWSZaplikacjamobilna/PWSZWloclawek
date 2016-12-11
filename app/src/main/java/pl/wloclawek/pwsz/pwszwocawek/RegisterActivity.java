@@ -389,7 +389,7 @@ public class RegisterActivity extends AppCompatActivity {
                     kierunek.id = pii.getProperty(1).toString();
                     kierunek.kierunek = pii.getProperty(0).toString();
                     kierunki[i] = kierunek;
-                }
+            }
 
                 Promotor[] promotors = new Promotor[soapPromotor.getPropertyCount()];
                 Log.e("TAG", "-------PRO" + soapPromotor.getPropertyCount());

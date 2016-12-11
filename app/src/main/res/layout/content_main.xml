@@ -30,7 +30,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_marginTop="30dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         card_view:cardCornerRadius="4dp">
 
         <RelativeLayout
@@ -39,7 +39,7 @@
 
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/zajecieNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -48,7 +48,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp" />
             <TextView
-                android:id="@+id/textView0"
+                android:id="@+id/godzinaNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -58,23 +58,36 @@
                 android:layout_marginStart="220dp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/typsalaNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Wykład, Sala 304"
-                android:layout_below="@+id/textView"
-                android:layout_alignStart="@+id/textView" />
+                android:layout_below="@+id/zajecieNow"
+                android:layout_alignStart="@+id/zajecieNow" />
+
             <TextView
-                android:id="@+id/textView33"
+            android:id="@+id/dzienNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17.10.2016"
+            android:layout_alignStart="@+id/godzinaNow"
+            android:layout_alignBottom="@+id/typsalaNow" />
+
+            <TextView
+                android:id="@+id/wykNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="17.10.2016"
-                android:layout_below="@+id/textView0"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="227dp" />
-
+                android:text="@string/ladowanie"
+                android:layout_below="@+id/typsalaNow"
+                android:layout_alignStart="@+id/typsalaNow" />
+            <TextView
+                android:id="@+id/etaNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ETA: 5 dni"
+                android:layout_below="@+id/dzienNow"
+                android:layout_alignStart="@+id/dzienNow" />
 
         </RelativeLayout>
 
@@ -87,7 +100,7 @@
         android:textColor="#a8a8a8"
         android:text="Następne zajęcia"
         android:textSize="16dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="115dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -97,7 +110,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_marginTop="140dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         card_view:cardCornerRadius="4dp">
 
         <RelativeLayout
@@ -106,7 +119,7 @@
 
 
             <TextView
-                android:id="@+id/textView009"
+                android:id="@+id/zajecieNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -115,7 +128,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp" />
             <TextView
-                android:id="@+id/textView02"
+                android:id="@+id/godzinyNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -125,23 +138,37 @@
                 android:layout_marginStart="220dp" />
 
             <TextView
-                android:id="@+id/textView52"
+                android:id="@+id/typsalaNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Laboratorium, Sala 302"
-                android:layout_below="@+id/textView009"
-                android:layout_alignStart="@+id/textView009" />
+                android:layout_below="@+id/zajecieNext"
+                android:layout_alignStart="@+id/zajecieNext" />
             <TextView
-                android:id="@+id/textView323"
+                android:id="@+id/dzienNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="17.10.2016"
-                android:layout_below="@+id/textView02"
+                android:layout_below="@+id/godzinyNext"
                 android:layout_marginTop="5dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="227dp" />
+            <TextView
+                android:id="@+id/wykNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ladowanie"
+                android:layout_below="@+id/typsalaNext"
+                android:layout_alignStart="@+id/typsalaNext" />
 
+            <TextView
+                android:id="@+id/etaNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ETA: 5 dni"
+                android:layout_below="@+id/dzienNext"
+                android:layout_alignStart="@+id/dzienNext" />
 
         </RelativeLayout>
 
@@ -155,7 +182,7 @@
         android:textColor="#a8a8a8"
         android:text="Aktualności"
         android:textSize="16dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="228dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 

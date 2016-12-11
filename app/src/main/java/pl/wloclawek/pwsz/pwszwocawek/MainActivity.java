@@ -25,8 +25,11 @@ import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+
+import java.sql.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,7 +49,18 @@ public class MainActivity extends AppCompatActivity
 
     String cookieFromPref;
     ListView listView;
-
+    TextView dzienNow ;
+    TextView godzinaNow;
+    TextView zajeciaNow ;
+    TextView typsalNow;
+    TextView dzienNext;
+    TextView godzinNext ;
+    TextView typssalNext ;
+    TextView zajeciaNext ;
+    TextView wykNext ;
+    TextView wtkNow ;
+    TextView etaNext ;
+    TextView etaNow ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +94,22 @@ public class MainActivity extends AppCompatActivity
                 "Ładowanie ...",
                 "Ładowanie ...",
         };
+
+         dzienNow = (TextView)findViewById(R.id.dzienNow);
+         godzinaNow = (TextView)findViewById(R.id.godzinaNow);
+         zajeciaNow = (TextView)findViewById(R.id.zajecieNow);
+         typsalNow = (TextView)findViewById(R.id.typsalaNow);
+         dzienNext = (TextView)findViewById(R.id.dzienNext);
+         godzinNext = (TextView)findViewById(R.id.godzinyNext);
+         typssalNext = (TextView)findViewById(R.id.typsalaNext);
+         zajeciaNext = (TextView)findViewById(R.id.zajecieNext);
+         wykNext = (TextView)findViewById(R.id.wykNext);
+         wtkNow = (TextView)findViewById(R.id.wykNow);
+         etaNext = (TextView)findViewById(R.id.etaNext);
+         etaNow = (TextView)findViewById(R.id.etaNow);
+
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
         listView.setAdapter(adapter);
@@ -89,6 +119,8 @@ public class MainActivity extends AppCompatActivity
                 Toast.LENGTH_LONG).show();
         NewsTask data = new NewsTask();
         data.execute();
+        AktualneTask data2 = new AktualneTask();
+        data2.execute();
     }
 
     @Override
@@ -160,49 +192,49 @@ public class MainActivity extends AppCompatActivity
         String[] newsarray;
         @Override
         protected Boolean doInBackground(Void... params) {
-try {
-    SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+            try {
+                SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 
 
-    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-            SoapEnvelope.VER11);
-    envelope.dotNet = true;
-    envelope.setOutputSoapObject(request);
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                        SoapEnvelope.VER11);
+                envelope.dotNet = true;
+                envelope.setOutputSoapObject(request);
 
-    class News {
-        String komunikat;
+                class News {
+                    String komunikat;
 
-    }
+                }
 
-    HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-    androidHttpTransport.call(SOAP_ACTION, envelope);
-    SoapObject soap = (SoapObject) envelope.getResponse();
-    Log.d("TAG", "-------PropertyCount" + soap.getPropertyCount());
-    Log.d("TAG", "-------AttributeCount" + soap.getAttributeCount());
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                SoapObject soap = (SoapObject) envelope.getResponse();
+                Log.d("TAG", "-------PropertyCount" + soap.getPropertyCount());
+                Log.d("TAG", "-------AttributeCount" + soap.getAttributeCount());
 
-    News[] news = new News[soap.getPropertyCount()];
-    Log.d("TAG", "-------News" + soap.getPropertyCount());
+                News[] news = new News[soap.getPropertyCount()];
+                Log.d("TAG", "-------News" + soap.getPropertyCount());
 
-    for (int i = 0; i < news.length; i++) {
-        SoapObject pii = (SoapObject) soap.getProperty(i);
-        News new1 = new News();
-        new1.komunikat = pii.getProperty(0).toString();
-        Log.d("TAG", "-------News" + pii.getProperty(0).toString());
-        news[i] = new1;
+                for (int i = 0; i < news.length; i++) {
+                    SoapObject pii = (SoapObject) soap.getProperty(i);
+                    News new1 = new News();
+                    new1.komunikat = pii.getProperty(0).toString();
+                    Log.d("TAG", "-------News" + pii.getProperty(0).toString());
+                    news[i] = new1;
 
-    }
+                }
 
-    newsarray = new String[news.length ];
-    int index = 0;
-    for (News k : news) {
-        newsarray[index] = "\r\n "+k.komunikat;
-        index++;
-    }
+                newsarray = new String[news.length ];
+                int index = 0;
+                for (News k : news) {
+                    newsarray[index] = "\r\n "+k.komunikat;
+                    index++;
+                }
 
-}catch(Exception e){
+            }catch(Exception e){
 
-    Log.e("TAG",e.toString());
-}
+                Log.e("TAG",e.toString());
+            }
             return true;
 
         }
@@ -232,4 +264,130 @@ try {
 
 
     }
+
+    public class AktualneTask extends AsyncTask<Void, Void, Boolean> {
+
+        class AktualneZajecia {
+            String wykladowca;
+            String budynek;
+            String przedmiot;
+            String GodzinaRoz;
+            String GodzinaZak;
+            String typ;
+            String sala;
+            String dzień;
+            String eta;
+        }
+
+        private static final int REQUEST_READ_CONTACTS = 0;
+        private String METHOD_NAME = "Aktualne";
+        private static final String NAMESPACE = "http://tempuri.org/";
+        private static final String URL = "http://77.245.247.158:2196/Service1.svc";
+        String SOAP_ACTION = "http://tempuri.org/IService1/Aktualne";
+        String resultData;
+        public AktualneZajecia[] aktualnedata;
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+                Log.e("TAG", "XXXXX-------adding");
+                request.addProperty("numer", sharedPref.getString("tajneCookie", "null"));
+                Log.e("TAG", "XXXXX-------added");
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                        SoapEnvelope.VER11);
+                Log.e("TAG", "XXXXX-------koperta");
+                envelope.dotNet = true;
+                envelope.setOutputSoapObject(request);
+                Log.e("TAG", "XXXXX-------wysylka");
+
+
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                androidHttpTransport.debug = true;
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                Log.e("dump Request: ", androidHttpTransport.requestDump);
+                Log.e("dump response: ", androidHttpTransport.responseDump);
+
+
+                SoapObject soap = (SoapObject) envelope.getResponse();
+                Log.e("TAG", "XXXXX-------PropertyCount" + soap.getPropertyCount());
+                Log.e("TAG", "XXXXX-------AttributeCount" + soap.getAttributeCount());
+                SoapObject soapaktualneZajecias = (SoapObject) soap.getProperty(0);
+                Log.e("TAG", "-------KIER" + soapaktualneZajecias.getPropertyCount());
+                AktualneZajecia[] aktualne = new AktualneZajecia[soapaktualneZajecias.getPropertyCount()];
+
+
+                for (int i = 0; i < aktualne.length; i++) {
+                    SoapObject pii2 = (SoapObject) soapaktualneZajecias.getProperty(i);
+
+                    AktualneZajecia new1 = new AktualneZajecia();
+
+                    new1.GodzinaRoz = pii2.getProperty(0).toString();
+                    new1.GodzinaZak = pii2.getProperty(1).toString();
+                    new1.budynek = pii2.getProperty(2).toString();
+                    new1.dzień = pii2.getProperty(3).toString();
+                    new1.eta =pii2.getProperty(4).toString();
+                    new1.przedmiot = pii2.getProperty(5).toString();
+
+                    new1.sala = pii2.getProperty(6).toString();
+                    new1.typ = pii2.getProperty(7).toString();
+                    new1.wykladowca = pii2.getProperty(8).toString();
+
+                    aktualne[i] = new1;
+
+                }
+
+                aktualnedata = aktualne;
+
+
+            } catch (Exception e) {
+
+                Log.e("TAG", e.toString());
+            }
+            return true;
+
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+
+            if(aktualnedata[0].przedmiot.length()>=25)
+            zajeciaNow.setText(aktualnedata[0].przedmiot.substring(0,25)+"...");
+            dzienNow.setText(aktualnedata[0].dzień.substring(0,10));
+            String godz1 = aktualnedata[0].GodzinaRoz.substring(2).replace('H',':').replace('M',' ');
+            String godz2 = aktualnedata[0].GodzinaZak.substring(2).replace('H',':').replace('M',' ');
+            godzinaNow.setText(godz1+"-"+godz2);
+            typsalNow.setText(aktualnedata[0].typ + ", sala " + aktualnedata[0].sala);
+            wtkNow.setText(aktualnedata[0].wykladowca);
+            String znak = aktualnedata[0].eta.substring(0,1);
+            etaNow.setText(aktualnedata[0].eta.substring(1));
+            if(znak.equals("Z")){
+                etaNow.setTextColor(Color.YELLOW);
+            }
+            if(znak.equals("R")){
+                etaNow.setTextColor(Color.RED);
+            }
+
+
+            if(aktualnedata[1].przedmiot.length()>=25)
+            zajeciaNext.setText(aktualnedata[1].przedmiot.substring(0,25)+"...");
+            dzienNext.setText(aktualnedata[1].dzień.substring(0,10));
+             godz1 = aktualnedata[1].GodzinaRoz.substring(2).replace('H',':').replace('M',' ');
+             godz2 = aktualnedata[1].GodzinaZak.substring(2).replace('H',':').replace('M',' ');
+            godzinNext.setText(godz1+"-"+godz2);
+            typssalNext.setText(aktualnedata[1].typ + ", sala " + aktualnedata[1].sala);
+            wykNext.setText(aktualnedata[1].wykladowca);
+            String znak2 = aktualnedata[1].eta.substring(0,1);
+            etaNext.setText(aktualnedata[1].eta.substring(1));
+            if(znak2.equals("Z")){
+                etaNext.setTextColor(Color.YELLOW);
+            }
+            if(znak2.equals("R")){
+                etaNext.setTextColor(Color.RED);
+            }
+
+        }
+
+    }
+
 }
