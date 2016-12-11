@@ -140,6 +140,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         }
+        else if (id == R.id.nav_jakdojade) {
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
