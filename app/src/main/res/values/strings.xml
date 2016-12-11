@@ -35,8 +35,8 @@
     <string name="IIfloor">II piętro</string>
     <string name="IIIfloor">III piętro</string>
     <string name="IVfloor">IV piętro</string>
-
-
+    <string name="radio1">typ normalny</string>
+    <string name="radio2">typ satelitarny</string>
 
 
     <string-array name="planets_array">
@@ -49,4 +49,5 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
