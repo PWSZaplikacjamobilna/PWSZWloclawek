@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 
          listView = (ListView) findViewById(R.id.listView13);
         String[] values = new String[]{"Ładowanie ...",
-                "Ładowanie ...",
+                "Ładowanie ......",
                 "Ładowanie ...",
                 "Ładowanie ...",
         };
