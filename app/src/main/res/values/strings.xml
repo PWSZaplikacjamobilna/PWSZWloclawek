@@ -6,6 +6,8 @@
 
     <string name="action_settings">Ustawienia</string>
     <string name="title_activity_login">Logowanie</string>
+    <string name="home">Strona główna</string>
+    <string name="schoolplantabbed">Plan budynków</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Numer indeksu</string>
@@ -50,4 +52,6 @@
         <item>Neptune</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

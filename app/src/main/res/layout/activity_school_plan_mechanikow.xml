@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorBack"
-    tools:context="pl.wloclawek.pwsz.pwszwocawek.SchoolPlan_zawisle">
+    tools:context="pl.wloclawek.pwsz.pwszwocawek.SchoolPlan_mechanikow">
 
     <ScrollView
         android:id="@+id/scroll"
@@ -30,7 +30,7 @@
         android:textColor="@color/textColorPrimary"
         android:background="@color/colorPrimaryDark"
         android:id="@+id/basement"
-        android:onClick="clickbasement"
+
        />
 
             <android.support.v7.widget.CardView
@@ -64,7 +64,7 @@
         android:layout_marginTop="1dp"
         android:background="@color/colorPrimaryDark"
         android:id="@+id/groundfloor"
-        android:onClick="clickgroundfloor"/>
+      />
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -98,7 +98,7 @@
         android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/Ifloor"
-        android:onClick="clickIfloor"/>
+      />
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -132,7 +132,7 @@
         android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/IIfloor"
-        android:onClick="clickIIfloor"/>
+       />
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -166,7 +166,7 @@
         android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/IIIfloor"
-        android:onClick="clickIIIfloor"/>
+      />
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -201,7 +201,7 @@
         android:background="@color/colorPrimaryDark"
         android:layout_marginTop="1dp"
         android:id="@+id/IVfloor"
-        android:onClick="clickIVfloor"/>
+      />
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"

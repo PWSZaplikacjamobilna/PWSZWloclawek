@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_planbudynkow) {
-            Intent intent = new Intent(this, SchoolPlanActivity.class);
+            Intent intent = new Intent(this, SchoolPlanTabbed.class);
             startActivity(intent);
 
         }
