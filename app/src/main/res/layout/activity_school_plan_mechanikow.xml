@@ -49,7 +49,7 @@
                     android:id="@+id/imgbasement"
                     android:layout_height="match_parent"
 
-                    android:onClick="imgbasement"
+
                     />
 
 
@@ -84,7 +84,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/imggroundfloor"
 
-                        android:onClick="imggroundfloor"/>
+                      />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -118,7 +118,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/imgIfloor"
 
-                        android:onClick="imgIfloor"/>
+                       />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -152,7 +152,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/imgIIfloor"
 
-                        android:onClick="imgIIfloor"/>
+                       />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -186,7 +186,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/imgIIIfloor"
 
-                        android:onClick="imgIIIfloor"/>
+                       />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -221,7 +221,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/imgIVfloor"
 
-                        android:onClick="imgIVfloor"/>
+                       />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
