@@ -24,12 +24,12 @@
 
 
             <Button
-                android:text="@string/basement"
+                android:text="@string/groundfloor2_zawisle"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColor="@color/textColorPrimary"
                 android:background="@color/colorPrimaryDark"
-                android:id="@+id/basement"
+                android:id="@+id/studenthause"
 
                 />
 
@@ -46,7 +46,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:id="@+id/imgbasement"
+                    android:id="@+id/imgstudenthause"
                     android:layout_height="match_parent"
 
                     />
@@ -55,10 +55,10 @@
             </android.support.v7.widget.CardView>
 
             <Button
-                android:text="@string/groundfloor"
+                android:text="@string/groundfloor_zawisle"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/basement"
+                android:layout_below="@+id/studenthause"
                 android:textColor="@color/textColorPrimary"
                 android:layout_marginTop="1dp"
                 android:background="@color/colorPrimaryDark"
@@ -88,7 +88,7 @@
             </android.support.v7.widget.CardView>
 
             <Button
-                android:text="@string/Ifloor"
+                android:text="@string/Ifloor_zawisle"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColor="@color/textColorPrimary"
@@ -121,7 +121,7 @@
             </android.support.v7.widget.CardView>
 
             <Button
-                android:text="@string/IIfloor"
+                android:text="@string/IIfloor_zawisle"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/Ifloor"
@@ -153,72 +153,6 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
-            <Button
-                android:text="@string/IIIfloor"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@+id/IIfloor"
-                android:textColor="@color/textColorPrimary"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginTop="1dp"
-                android:id="@+id/IIIfloor"
-                />
-
-            <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view5"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="110dp"
-                card_view:cardCornerRadius="0dp">
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imgIIIfloor"
-/>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-
-            <Button
-                android:text="@string/IVfloor"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textColor="@color/textColorPrimary"
-                android:layout_below="@+id/IIIfloor"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginTop="1dp"
-                android:id="@+id/IVfloor"
-                />
-
-            <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view6"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="110dp"
-                card_view:cardCornerRadius="0dp">
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imgIVfloor"
-/>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 

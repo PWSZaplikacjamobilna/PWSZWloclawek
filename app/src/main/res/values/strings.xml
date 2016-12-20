@@ -39,18 +39,12 @@
     <string name="IVfloor">IV piętro</string>
     <string name="radio1">typ normalny</string>
     <string name="radio2">typ satelitarny</string>
+    <string name="groundfloor_zawisle">Parter</string>
+    <string name="Ifloor_zawisle">I piętro</string>
+    <string name="IIfloor_zawisle">II piętro</string>
+    <string name="groundfloor2_zawisle">Parter - dom studenta</string>
 
 
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
     <string name="section_format">Hello World from section: %1$d</string>
