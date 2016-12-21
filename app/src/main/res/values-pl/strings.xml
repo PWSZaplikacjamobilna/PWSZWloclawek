@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">PWSZ Włocławek</string>
+
+    <string name="navigation_drawer_open">Otwórz menu</string>
+    <string name="navigation_drawer_close">Zamknij menu</string>
+
+    <string name="action_settings">Ustawienia</string>
+    <string name="title_activity_login">Logowanie</string>
+    <string name="home">Strona główna</string>
+    <string name="schoolplantabbed">Plan budynków</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Numer indeksu</string>
+    <string name="prompt_password">Hasło</string>
+    <string name="prompt_password2">Powtórz hasło</string>
+    <string name="kierunek">Kierunek</string>
+    <string name="action_sign_in">Zaloguj</string>
+    <string name="register">Zarejestruj</string>
+    <string name="action_sign_in_short">Logowanie</string>
+    <string name="error_invalid_email">Numer indesku jest niepoprawny</string>
+    <string name="error_invalid_password">Hasło jest za krótkie</string>
+    <string name="error_incorrect_password">Hasło jest nie poprawne</string>
+    <string name="error_field_required">To pole jest wymagane</string>
+    <string name="error_incorrect_passwordOrpassword">Hasło lub login jest nie poprawne</string>
+    <string name="error_takiesame">Podane hasła nie są identyczne</string>
+    <string name="ladowanie">Ładowanie ...</string>
+    <string name="wybGrupaL">Wybierz grupę laboratoryjną...</string>
+    <string name="wybGrupaW">Wybierz grupę wykładową...</string>
+    <string name="wybPromo">Wybierz promotora ...</string>
+    <string name="wybKier">Wybierz kierunek ...</string>
+    <string name="wybSpec">Wybierz specjalność ...</string>
+    <string name="wybRok">Wybierz rok studiów ...</string>
+    <string name="selectlanguage">Wybierz język</string>
+    <string name="selectplace">Wybierz miejsce</string>
+
+
+
+
+
+    <string name="titlehome">Strona główna</string>
+    <string name="schedule">Plan zajęć</string>
+    <string name="timetable">Terminarz</string>
+    <string name="wheniarrive">Jak dojadę?</string>
+    <string name="planbuildings">Plan budynków</string>
+    <string name="consultations">Konsultacje</string>
+    <string name="contact">Kontakt</string>
+    <string name="logout">Wyloguj</string>
+
+    <string name="currentlessons">Aktualne zajęcia</string>
+    <string name="nextlessons">Następne zajęcia</string>
+    <string name="news">Aktualności</string>
+
+
+    <string name="basement">Piwnica</string>
+    <string name="groundfloor">Parter</string>
+    <string name="Ifloor">I piętro</string>
+    <string name="IIfloor">II piętro</string>
+    <string name="IIIfloor">III piętro</string>
+    <string name="IVfloor">IV piętro</string>
+    <string name="radio1">typ normalny</string>
+    <string name="radio2">typ satelitarny</string>
+    <string name="groundfloor_zawisle">Parter</string>
+    <string name="Ifloor_zawisle">I piętro</string>
+    <string name="IIfloor_zawisle">II piętro</string>
+    <string name="groundfloor2_zawisle">Parter - dom studenta</string>
+
+
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>
