@@ -7,6 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="home">Home</string>
+    <string name="titlehome">Strona główna</string>
     <string name="schoolplantabbed">Building plan</string>
 
     <!-- Strings related to login -->

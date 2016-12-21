@@ -51,6 +51,8 @@ import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity  {
 
+
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
