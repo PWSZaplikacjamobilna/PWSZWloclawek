@@ -252,6 +252,13 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(final Boolean success) {
+            if(newsarray == null)
+            {
+                NewsTask data = new NewsTask();
+                data.execute();
+                return;
+            }
+
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
                     android.R.layout.simple_list_item_1, android.R.id.text1, newsarray){
                 @Override
