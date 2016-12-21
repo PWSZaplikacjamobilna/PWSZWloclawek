@@ -24,78 +24,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_height="80dp"
-        card_view:cardCornerRadius="4dp">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/zajecieNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Kryptografia "
-                android:layout_marginTop="10dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp" />
-
-            <TextView
-                android:id="@+id/typsalaNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Wykład, Sala 304"
-                android:layout_below="@+id/zajecieNow"
-                android:layout_alignStart="@+id/zajecieNow" />
-
-            <TextView
-                android:id="@+id/wykNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ladowanie"
-                android:layout_below="@+id/typsalaNow"
-                android:layout_alignStart="@+id/typsalaNow" />
-
-            <TextView
-            android:id="@+id/dzienNow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="17.10.2016"
-                android:layout_alignBaseline="@+id/typsalaNow"
-                android:layout_alignBottom="@+id/typsalaNow"
-                android:layout_alignEnd="@+id/godzinaNow" />
-
-            <TextView
-                android:id="@+id/etaNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ETA: 5 dni"
-                android:layout_below="@+id/dzienNow"
-                android:layout_alignEnd="@+id/dzienNow" />
-
-            <TextView
-                android:id="@+id/godzinaNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="15:00 - 16:00"
-                android:layout_above="@+id/typsalaNow"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="13dp" />
-
-        </RelativeLayout>
-
-
-    </android.support.v7.widget.CardView>
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -109,7 +37,7 @@
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view5"
+        android:id="@+id/card_viewNEXT"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_marginTop="140dp"
@@ -208,6 +136,81 @@
         android:dividerHeight="7px">
     </ListView>
 </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_viewNOW"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_marginTop="14dp"
+        android:layout_height="80dp"
+        app:cardCornerRadius="4dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        tools:onClick="AktualneClick">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/zajecieNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kryptografia "
+                android:layout_marginTop="10dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp" />
+
+            <TextView
+                android:id="@+id/typsalaNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Wykład, Sala 304"
+                android:layout_below="@+id/zajecieNow"
+                android:layout_alignStart="@+id/zajecieNow" />
+
+            <TextView
+                android:id="@+id/wykNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ladowanie"
+                android:layout_below="@+id/typsalaNow"
+                android:layout_alignStart="@+id/typsalaNow" />
+
+            <TextView
+            android:id="@+id/dzienNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17.10.2016"
+                android:layout_alignBaseline="@+id/typsalaNow"
+                android:layout_alignBottom="@+id/typsalaNow"
+                android:layout_alignEnd="@+id/godzinaNow" />
+
+            <TextView
+                android:id="@+id/etaNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ETA: 5 dni"
+                android:layout_below="@+id/dzienNow"
+                android:layout_alignEnd="@+id/dzienNow" />
+
+            <TextView
+                android:id="@+id/godzinaNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="15:00 - 16:00"
+                android:layout_above="@+id/typsalaNow"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="13dp" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>

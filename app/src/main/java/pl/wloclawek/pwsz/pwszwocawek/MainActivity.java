@@ -1,8 +1,11 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,14 +14,18 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +40,11 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,6 +76,13 @@ public class MainActivity extends AppCompatActivity
     TextView wtkNow ;
     TextView etaNext ;
     TextView etaNow ;
+    PhotoViewAttacher mAttacher;
+     String salaA;
+    String salaN;
+    String budynekA;
+    String budynekN;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +93,32 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        CardView aktC = (CardView) findViewById(R.id.card_viewNOW);
+        aktC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int id = getResources().getIdentifier("s"+salaA.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
+               openDialog(salaA,id,budynekA);
+            }
+        });
+
+        CardView nextC = (CardView) findViewById(R.id.card_viewNEXT);
+        nextC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int id = getResources().getIdentifier("s"+salaN.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
+                openDialog(salaN,id,budynekN);
             }
         });
 
@@ -122,7 +162,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.LENGTH_LONG).show();
 
 
-        AktualneTask data2 = new AktualneTask();
+        LoopApp data2 = new LoopApp();
         data2.execute();
     }
 
@@ -185,6 +225,33 @@ public class MainActivity extends AppCompatActivity
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openDialog(String sala, int salaR,String budynek){
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View subView = inflater.inflate(R.layout.dialog, null);
+
+        final ImageView subImageView = (ImageView)subView.findViewById(R.id.image);
+        Drawable drawable = getResources().getDrawable(salaR);
+        subImageView.setImageDrawable(drawable);
+         mAttacher = new PhotoViewAttacher(subImageView);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(budynek+" - "+getString(R.string.sala)+" "+sala);
+
+        builder.setView(subView);
+        AlertDialog alertDialog = builder.create();
+
+
+
+        builder.setNegativeButton("Zamknij", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+        mAttacher.update();
     }
 
     public class NewsTask extends AsyncTask<Void, Void, Boolean> {
@@ -284,6 +351,31 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+
+    public class LoopApp extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
+
+// This schedule a runnable task every 2 minutes
+            scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
+                public void run() {
+                    runTest();
+                }
+            }, 0, 1, TimeUnit.MINUTES);
+
+            return true;
+        }
+
+        public void runTest() {
+            AktualneTask data2 = new AktualneTask();
+            data2.execute();
+        }
+    }
+
 
     public class AktualneTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -412,6 +504,8 @@ public class MainActivity extends AppCompatActivity
                 String godz2 = aktualnedata[now].GodzinaZak.substring(11).substring(0, 5);
                 godzinaNow.setText(godz1 + "-" + godz2);
                 typsalNow.setText(aktualnedata[now].typ.replace(" ", "") + ", "+getString(R.string.sala)+" " + aktualnedata[now].sala);
+                salaA=aktualnedata[now].sala;
+                budynekA=aktualnedata[now].budynek;
                 wtkNow.setText(aktualnedata[now].wykladowca);
                 String znak = aktualnedata[0].eta.substring(0,1);
                   etaNow.setText(aktualnedata[0].eta.substring(1));
@@ -453,6 +547,8 @@ public class MainActivity extends AppCompatActivity
                 String godz2 = aktualnedata[next].GodzinaZak.substring(11).substring(0, 5);
                 godzinNext.setText(godz1 + "-" + godz2);
                 typssalNext.setText(aktualnedata[next].typ.replace(" ", "") + ", "+getString(R.string.sala)+" " + aktualnedata[next].sala);
+                salaN=aktualnedata[next].sala;
+                budynekN=aktualnedata[next].budynek;
                 wykNext.setText(aktualnedata[next].wykladowca);
             String znak2 = aktualnedata[1].eta.substring(0,1);
             etaNext.setText(aktualnedata[1].eta.substring(1));
@@ -461,7 +557,6 @@ public class MainActivity extends AppCompatActivity
             }
             if(znak2.equals("R")){
                 etaNext.setTextColor(Color.RED);
-
             }
 
             }
