@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 public class SchoolPlan_zawisle extends Fragment {
 
     CardView card_view,card_view2,card_view3,card_view4;
@@ -20,6 +22,7 @@ public class SchoolPlan_zawisle extends Fragment {
     Button studenthouse,groundfloor,Ifloor,IIfloor;
     Integer imgsource;
     String text;
+    PhotoViewAttacher mAttacher;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,7 +160,7 @@ public class SchoolPlan_zawisle extends Fragment {
         final ImageView subImageView = (ImageView)subView.findViewById(R.id.image);
         Drawable drawable = getResources().getDrawable(imgsource);
         subImageView.setImageDrawable(drawable);
-
+        mAttacher = new PhotoViewAttacher(subImageView);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(text);
 
@@ -174,5 +177,6 @@ public class SchoolPlan_zawisle extends Fragment {
         });
 
         builder.show();
+        mAttacher.update();
     }
 }

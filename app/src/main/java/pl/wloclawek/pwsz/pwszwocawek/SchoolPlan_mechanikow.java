@@ -18,10 +18,12 @@ import android.widget.Button;
 
 import android.widget.ImageView;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 
 public class SchoolPlan_mechanikow extends Fragment  {
 
-
+    PhotoViewAttacher mAttacher;
     CardView card_view,card_view2,card_view3,card_view4,card_view5,card_view6;
     ImageView imgbasement,imggroundfloor,imgIfloor,imgIIfloor,imgIIIfloor,imgIVfloor;
     Button basement,groundfloor,Ifloor,IIfloor,IIIfloor,IVfloor;
@@ -51,6 +53,7 @@ public class SchoolPlan_mechanikow extends Fragment  {
                 card_view6.setVisibility(View.GONE);
                 Drawable drawable6 = getResources().getDrawable(R.drawable.piwnica);
                 imgbasement.setImageDrawable(drawable6);
+
                 basement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
                 groundfloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 Ifloor.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -237,7 +240,7 @@ public class SchoolPlan_mechanikow extends Fragment  {
         final ImageView subImageView = (ImageView)subView.findViewById(R.id.image);
         Drawable drawable = getResources().getDrawable(imgsource);
         subImageView.setImageDrawable(drawable);
-
+        mAttacher = new PhotoViewAttacher(subImageView);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(text);
 
@@ -254,6 +257,7 @@ public class SchoolPlan_mechanikow extends Fragment  {
         });
 
         builder.show();
+        mAttacher.update();
     }
 
 
