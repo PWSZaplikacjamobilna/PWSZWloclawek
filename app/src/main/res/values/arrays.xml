@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="miejsce">
-        <item>Wybierz miejsce ...</item>
+        <item>@string/selectplace</item>
         <item>ul. Mechaników 3</item>
         <item>ul. Obrońców Wisły 1920 21/25</item>
         <item>ul. 3 Maja 17</item>

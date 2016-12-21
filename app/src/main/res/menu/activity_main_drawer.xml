@@ -5,40 +5,37 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_home"
-            android:title="Home" />
+            android:title="@string/titlehome" />
         <item
             android:id="@+id/nav_planzajec"
             android:icon="@drawable/ic_menu_planzajec"
-            android:title="Plan zajęć" />
+            android:title="@string/schedule" />
         <item
             android:id="@+id/nav_terminarz"
             android:icon="@drawable/ic_menu_terminarz"
-            android:title="Terminarz" />
+            android:title="@string/timetable" />
         <item
             android:id="@+id/nav_jakdojade"
             android:icon="@drawable/ic_menu_jakdojade"
-            android:title="Jak dojade?" />
+            android:title="@string/wheniarrive" />
         <item
             android:id="@+id/nav_konsultacje"
             android:icon="@drawable/ic_menu_konsultacje"
-            android:title="Konsultacje" />
+            android:title="@string/consultations" />
         <item
             android:id="@+id/nav_planbudynkow"
             android:icon="@drawable/ic_menu_planbudynkow"
-            android:title="Plan budynków" />
+            android:title="@string/planbuildings" />
         <item
             android:id="@+id/nav_kontakt"
             android:icon="@drawable/ic_menu_kontakt"
-            android:title="Kontakt" />
-        <item
-        android:id="@+id/nav_ustawienia"
-        android:icon="@drawable/ic_menu_ustawienia"
-        android:title="Ustawienia" />
+            android:title="@string/contact" />
+
 
         <item
             android:id="@+id/nav_wyloguj"
             android:icon="@drawable/ic_wyloguj"
-            android:title="Wyloguj" />
+            android:title="@string/logout" />
 
     </group>
 

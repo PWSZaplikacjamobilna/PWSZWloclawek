@@ -6,6 +6,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
@@ -22,6 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -43,6 +46,7 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class LoginActivity extends AppCompatActivity  {
@@ -63,7 +67,7 @@ public class LoginActivity extends AppCompatActivity  {
      String SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
     //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
 
-
+    Locale myLocale;
 
 
     TextView tv;
@@ -240,6 +244,25 @@ public class LoginActivity extends AppCompatActivity  {
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
+    }
+
+    public void english(View view) {
+        setLocale("en");
+    }
+    public void setLocale(String lang) {
+
+        myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, LoginActivity.class);
+        startActivity(refresh);
+    }
+
+    public void polish(View view) {
+        setLocale("pl");
     }
 
     /**
