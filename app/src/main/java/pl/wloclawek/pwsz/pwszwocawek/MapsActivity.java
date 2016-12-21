@@ -78,17 +78,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    public void szukaj()
-    {
-
-        mMap.clear();
-
-        if(location.equals("brak")) {
+    public void szukaj() {
             mMap.clear();
+
+        if (location.equals("brak")) {
+
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.659, 19.059), 11));
 
         }
-        if(location.equals("mechanikow")) {
+        if (location.equals("mechanikow")) {
 
 
             LatLng mechanikow = new LatLng(52.668729, 19.040183);
@@ -98,8 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        if(location.equals("zawisle")) {
-
+        if (location.equals("zawisle")) {
 
 
             LatLng mechanikow = new LatLng(52.671947, 19.082564);
@@ -108,16 +105,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        if(location.equals("3maja")) {
-
+        if (location.equals("3maja")) {
 
 
             LatLng mechanikow = new LatLng(52.658027, 19.069735);
             mMap.addMarker(new MarkerOptions().position(mechanikow).title("ul. 3 Maja 17").icon(BitmapDescriptorFactory.fromResource(R.drawable.university)));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mechanikow, 13));
 
-        }
 
+    }
     }
 
     @Override
