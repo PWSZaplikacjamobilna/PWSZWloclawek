@@ -192,7 +192,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -222,7 +224,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -259,7 +260,7 @@ public class MainActivity extends AppCompatActivity
 
 
         private static final int REQUEST_READ_CONTACTS = 0;
-        private   String METHOD_NAME = "NewsData";
+        private String METHOD_NAME = "NewsData";
         private static final String NAMESPACE = "http://tempuri.org/";
         private static final String URL = "http://77.245.247.158:2196/Service1.svc";
         String SOAP_ACTION = "http://tempuri.org/IService1/NewsData";
