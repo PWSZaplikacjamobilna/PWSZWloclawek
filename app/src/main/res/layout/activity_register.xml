@@ -83,58 +83,6 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <Spinner
-
-                android:paddingTop="20dp"
-                android:id="@+id/spinnerKierunek"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:prompt="@string/kierunek"
-                android:spinnerMode="dropdown" />
-            <Spinner
-                android:paddingTop="20dp"
-                android:id="@+id/spinnerSpecjalnosc"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:prompt="@string/kierunek"
-                android:spinnerMode="dropdown" />
-
-            <Spinner
-                android:paddingTop="20dp"
-                android:id="@+id/spinnerRok"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:prompt="@string/kierunek"
-                android:spinnerMode="dropdown" />
-            <Spinner
-            android:paddingTop="20dp"
-            android:id="@+id/spinnerGrupaWykladowa"
-            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:prompt="@string/kierunek"
-            android:spinnerMode="dropdown" />
-            <Spinner
-                android:paddingTop="20dp"
-                android:id="@+id/spinnerGrupaLab"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:prompt="@string/kierunek"
-                android:spinnerMode="dropdown" />
-            <Spinner
-                android:paddingTop="20dp"
-                android:id="@+id/spinnerPromotor"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:prompt="@string/kierunek"
-                android:spinnerMode="dropdown" />
-
-
             <Button
                 android:id="@+id/register_button"
                 style="?android:textAppearanceSmall"

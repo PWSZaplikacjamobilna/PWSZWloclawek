@@ -47,15 +47,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp" />
-            <TextView
-                android:id="@+id/godzinaNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="15:00 - 16:00"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="220dp" />
 
             <TextView
                 android:id="@+id/typsalaNow"
@@ -67,27 +58,39 @@
                 android:layout_alignStart="@+id/zajecieNow" />
 
             <TextView
-            android:id="@+id/dzienNow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="17.10.2016"
-            android:layout_alignStart="@+id/godzinaNow"
-            android:layout_alignBottom="@+id/typsalaNow" />
-
-            <TextView
                 android:id="@+id/wykNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ladowanie"
                 android:layout_below="@+id/typsalaNow"
                 android:layout_alignStart="@+id/typsalaNow" />
+
+            <TextView
+            android:id="@+id/dzienNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17.10.2016"
+                android:layout_alignBaseline="@+id/typsalaNow"
+                android:layout_alignBottom="@+id/typsalaNow"
+                android:layout_alignEnd="@+id/godzinaNow" />
+
             <TextView
                 android:id="@+id/etaNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ETA: 5 dni"
                 android:layout_below="@+id/dzienNow"
-                android:layout_alignStart="@+id/dzienNow" />
+                android:layout_alignEnd="@+id/dzienNow" />
+
+            <TextView
+                android:id="@+id/godzinaNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="15:00 - 16:00"
+                android:layout_above="@+id/typsalaNow"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="13dp" />
 
         </RelativeLayout>
 
@@ -127,15 +130,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp" />
-            <TextView
-                android:id="@+id/godzinyNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="18:00 - 19:00"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="220dp" />
 
             <TextView
                 android:id="@+id/typsalaNext"
@@ -145,15 +139,7 @@
                 android:text="Laboratorium, Sala 302"
                 android:layout_below="@+id/zajecieNext"
                 android:layout_alignStart="@+id/zajecieNext" />
-            <TextView
-                android:id="@+id/dzienNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="17.10.2016"
-                android:layout_below="@+id/godzinyNext"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="227dp" />
+
             <TextView
                 android:id="@+id/wykNext"
                 android:layout_width="wrap_content"
@@ -163,12 +149,31 @@
                 android:layout_alignStart="@+id/typsalaNext" />
 
             <TextView
+                android:id="@+id/dzienNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17.10.2016"
+                android:layout_alignBaseline="@+id/typsalaNext"
+                android:layout_alignBottom="@+id/typsalaNext"
+                android:layout_alignEnd="@+id/godzinyNext" />
+
+            <TextView
                 android:id="@+id/etaNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ETA: 5 dni"
                 android:layout_below="@+id/dzienNext"
-                android:layout_alignStart="@+id/dzienNext" />
+                android:layout_alignEnd="@+id/dzienNext" />
+
+            <TextView
+                android:id="@+id/godzinyNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="18:00 - 19:00"
+                android:layout_above="@+id/typsalaNext"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="13dp" />
 
         </RelativeLayout>
 
