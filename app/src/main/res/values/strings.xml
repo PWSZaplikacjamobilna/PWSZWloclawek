@@ -65,6 +65,8 @@
     <string name="groundfloor2_zawisle">Parter - dom studenta</string>
 
 
+    <string name="sala">sala</string>
+
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
     <string name="section_format">Hello World from section: %1$d</string>

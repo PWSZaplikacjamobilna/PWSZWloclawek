@@ -351,6 +351,7 @@ public class MainActivity extends AppCompatActivity
                     new1.typ = pii2.getProperty(7).toString();
                     new1.wykladowca = pii2.getProperty(4).toString();
                     new1.now = pii2.getProperty(10).toString();
+                    new1.eta = pii2.getProperty(3).toString();
                     if(new1.now.equals("NOW")){
                         now = i;
                     }
@@ -403,16 +404,16 @@ public class MainActivity extends AppCompatActivity
                 String godz1 = aktualnedata[now].GodzinaRoz.substring(11).substring(0, 5);
                 String godz2 = aktualnedata[now].GodzinaZak.substring(11).substring(0, 5);
                 godzinaNow.setText(godz1 + "-" + godz2);
-                typsalNow.setText(aktualnedata[now].typ.replace(" ", "") + ", sala " + aktualnedata[now].sala);
+                typsalNow.setText(aktualnedata[now].typ.replace(" ", "") + ", "+getString(R.string.sala)+" " + aktualnedata[now].sala);
                 wtkNow.setText(aktualnedata[now].wykladowca);
-                //String znak = aktualnedata[0].eta.substring(0,1);
-                //  etaNow.setText(aktualnedata[0].eta.substring(1));
-                //  if(znak.equals("Z")){
-                //      etaNow.setTextColor(Color.YELLOW);
-                //  }
-                //  if(znak.equals("R")){
-                //      etaNow.setTextColor(Color.RED);
-                //  }
+                String znak = aktualnedata[0].eta.substring(0,1);
+                  etaNow.setText(aktualnedata[0].eta.substring(1));
+                  if(znak.equals("Z")){
+                      etaNow.setTextColor(Color.YELLOW);
+                  }
+                  if(znak.equals("R")){
+                      etaNow.setTextColor(Color.RED);
+                  }
             }
 
 
@@ -444,17 +445,17 @@ public class MainActivity extends AppCompatActivity
                 String godz1 = aktualnedata[next].GodzinaRoz.substring(11).substring(0, 5);
                 String godz2 = aktualnedata[next].GodzinaZak.substring(11).substring(0, 5);
                 godzinNext.setText(godz1 + "-" + godz2);
-                typssalNext.setText(aktualnedata[next].typ.replace(" ", "") + ", sala " + aktualnedata[next].sala);
+                typssalNext.setText(aktualnedata[next].typ.replace(" ", "") + ", "+getString(R.string.sala)+" " + aktualnedata[next].sala);
                 wykNext.setText(aktualnedata[next].wykladowca);
-//            String znak2 = aktualnedata[1].eta.substring(0,1);
-//            etaNext.setText(aktualnedata[1].eta.substring(1));
-//            if(znak2.equals("Z")){
-//                etaNext.setTextColor(Color.YELLOW);
-//            }
-//            if(znak2.equals("R")){
-//                etaNext.setTextColor(Color.RED);
+            String znak2 = aktualnedata[1].eta.substring(0,1);
+            etaNext.setText(aktualnedata[1].eta.substring(1));
+            if(znak2.equals("Z")){
+                etaNext.setTextColor(Color.YELLOW);
+            }
+            if(znak2.equals("R")){
+                etaNext.setTextColor(Color.RED);
 
-//            }
+            }
 
             }
         }

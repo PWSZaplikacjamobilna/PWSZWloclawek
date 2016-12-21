@@ -59,6 +59,8 @@
     <string name="logout">Log out</string>
 
 
+    <string name="sala">room</string>
+
     <string name="title_activity_maps">Maps</string>
     <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
     <string name="section_format">Hello World from section: %1$d</string>

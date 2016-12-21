@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity  {
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mNumerView;
+    private EditText mNumerView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_login);
          sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         // Set up the login form.
-        mNumerView = (AutoCompleteTextView) findViewById(R.id.numer);
+        mNumerView = (EditText) findViewById(R.id.numer);
 
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -332,7 +332,7 @@ public class LoginActivity extends AppCompatActivity  {
                 SoapPrimitive result = (SoapPrimitive)envelope.getResponse();
 
                 //to get the data
-                 resultData = result.toString();
+                resultData = result.toString();
                 // 0 is the first object of data
 
                 Log.i("TAG", "OK ------------------------------------------------------- " + resultData);
