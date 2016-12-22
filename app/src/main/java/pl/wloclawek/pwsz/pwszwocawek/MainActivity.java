@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,13 +82,16 @@ public class MainActivity extends AppCompatActivity
     String salaN;
     String budynekA;
     String budynekN;
-
+    TextView txMenu;
+ImageView myImgView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         sharedPref = getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -130,6 +134,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View hView =  navigationView.getHeaderView(0);
+        LinearLayout lo= (LinearLayout) hView.findViewById(R.id.iv_nav_backID);
+
+         txMenu = (TextView)  hView.findViewById(R.id.numer);
+
+        txMenu.setText(sharedPref.getString("numer", "null"));
+//        lo.setBackgroundResource(R.drawable.day);
 
          listView = (ListView) findViewById(R.id.listView13);
         String[] values = new String[]{"Ładowanie ...",
@@ -391,6 +403,7 @@ public class MainActivity extends AppCompatActivity
             String dzień;
             String eta;
             String now;
+            String numer;
         }
 
         private static final int REQUEST_READ_CONTACTS = 0;
@@ -408,7 +421,7 @@ public class MainActivity extends AppCompatActivity
             try {
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
                 Log.e("TAG", "XXXXX-------adding");
-                request.addProperty("indeks", "8550");
+                request.addProperty("cookie", sharedPref.getString("tajneCookie", "null"));
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 String date = df.format(Calendar.getInstance().getTime());
                 request.addProperty("date", date);
@@ -452,6 +465,7 @@ public class MainActivity extends AppCompatActivity
                     new1.wykladowca = pii2.getProperty(4).toString();
                     new1.now = pii2.getProperty(10).toString();
                     new1.eta = pii2.getProperty(3).toString();
+                    new1.numer =pii2.getProperty(5).toString();
                     if(new1.now.equals("NOW")){
                         now = i;
                     }
@@ -517,6 +531,7 @@ public class MainActivity extends AppCompatActivity
                       etaNow.setTextColor(Color.RED);
                   }
             }
+
 
 
 

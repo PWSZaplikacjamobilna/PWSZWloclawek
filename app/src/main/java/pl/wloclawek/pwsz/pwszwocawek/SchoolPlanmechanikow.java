@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 
-public class SchoolPlan_mechanikow extends Fragment  {
+public class SchoolPlanmechanikow extends Fragment  {
 
     PhotoViewAttacher mAttacher;
     CardView card_view,card_view2,card_view3,card_view4,card_view5,card_view6;

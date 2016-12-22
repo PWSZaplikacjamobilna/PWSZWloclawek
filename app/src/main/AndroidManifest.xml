@@ -19,6 +19,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
@@ -36,8 +37,7 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/register" />
-        <activity android:name=".SchoolPlan_zawisle" />
-        <activity android:name=".SchoolPlan_mechanikow" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

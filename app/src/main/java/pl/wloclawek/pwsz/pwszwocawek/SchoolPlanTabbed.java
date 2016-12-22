@@ -1,7 +1,5 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
@@ -9,13 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
 
 public class SchoolPlanTabbed extends AppCompatActivity  {
 
@@ -69,10 +60,10 @@ public class SchoolPlanTabbed extends AppCompatActivity  {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    SchoolPlan_mechanikow tab1=new SchoolPlan_mechanikow();
+                    SchoolPlanmechanikow tab1=new SchoolPlanmechanikow();
                     return tab1;
                 case 1:
-                    SchoolPlan_zawisle tab2=new SchoolPlan_zawisle();
+                    SchoolPlanzawisle tab2=new SchoolPlanzawisle();
                     return tab2;
                 default:
                     return null;

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
+    android:id="@+id/iv_nav_backID"
     android:background="@drawable/iv_nav_background"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -20,10 +21,11 @@
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
+        android:id="@+id/numer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="8550"
+        android:text="----"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView

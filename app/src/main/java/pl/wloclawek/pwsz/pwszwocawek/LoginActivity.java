@@ -132,7 +132,8 @@ public class LoginActivity extends AppCompatActivity  {
 
 
         cookieFromPref = sharedPref.getString("tajneCookie","null");
-        Toast.makeText(this, cookieFromPref,
+
+        Toast.makeText(this,"Cookie"+ cookieFromPref,
                 Toast.LENGTH_LONG).show();
         Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
         if(!isOnline()){
@@ -279,6 +280,7 @@ public class LoginActivity extends AppCompatActivity  {
         private final String mPassword;
            Boolean success =false;
         String cookie = "false";
+        String numer;
         Boolean authcookie = false;
 
         UserLoginTask(String email, String password) {
@@ -355,8 +357,10 @@ public class LoginActivity extends AppCompatActivity  {
                 success =  false;
                 return false;
             }else{
+                Log.i("TAG", "NUMER -ONE1111--------- " + resultData.toString());
 
-                cookie = resultData.toString();
+                cookie = resultData.toString().substring(4);
+                numer =resultData.toString().substring(0,4);
 
                 return true;
             }
@@ -368,12 +372,14 @@ public class LoginActivity extends AppCompatActivity  {
 
             mAuthTask = null;
             if (success) {
-                Toast.makeText(LoginActivity.this, cookie,
+                Toast.makeText(LoginActivity.this, numer,
                         Toast.LENGTH_LONG).show();
 
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("tajneCookie", cookie);
+                editor.putString("numer", numer);
                 editor.commit();
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
