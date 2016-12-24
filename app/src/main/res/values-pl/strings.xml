@@ -9,6 +9,9 @@
     <string name="home">Strona główna</string>
     <string name="schoolplantabbed">Plan budynków</string>
 
+
+    <string name="tokenInfo">Token został wysalny na maila :(index@pwsz.wloclawek.pl)</string>
+    <string name="token">Token</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Numer indeksu</string>
     <string name="prompt_password">Hasło</string>

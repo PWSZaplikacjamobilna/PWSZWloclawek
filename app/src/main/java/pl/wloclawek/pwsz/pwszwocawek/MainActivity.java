@@ -416,12 +416,15 @@ ImageView myImgView;
         public int now = 99;
         public int next = 99;
 
+        boolean succcc = true;
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
                 Log.e("TAG", "XXXXX-------adding");
+
                 request.addProperty("cookie", sharedPref.getString("tajneCookie", "null"));
+                Log.e("TAG", "COOOOOOOOOOOOOOOOOOOOOOOOOKIE"+sharedPref.getString("tajneCookie", "null"));
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 String date = df.format(Calendar.getInstance().getTime());
                 request.addProperty("date", date);
@@ -482,6 +485,8 @@ ImageView myImgView;
             } catch (Exception e) {
 
                 Log.e("TAG", e.toString());
+                succcc = false;
+                return false;
             }
             return true;
 
@@ -489,8 +494,8 @@ ImageView myImgView;
 
         @Override
         protected void onPostExecute(final Boolean success) {
-            NewsTask data = new NewsTask();
-            data.execute();
+
+
 
             if(now == 99){
 
@@ -504,6 +509,7 @@ ImageView myImgView;
             godzinaNow.setText("");
             typsalNow.setText("");
             wtkNow.setText("");
+                etaNow.setText("");
 
             }else {
 
@@ -575,6 +581,16 @@ ImageView myImgView;
                 etaNext.setTextColor(Color.RED);
             }
 
+            }
+
+
+            if(success == true) {
+                NewsTask data = new NewsTask();
+                data.execute();
+            }else
+            {
+                AktualneTask akt = new AktualneTask();
+                akt.execute();
             }
         }
 

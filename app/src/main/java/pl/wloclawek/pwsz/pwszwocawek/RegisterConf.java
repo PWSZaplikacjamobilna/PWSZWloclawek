@@ -10,89 +10,50 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+public class RegisterConf extends AppCompatActivity {
 
-public class RegisterActivity extends AppCompatActivity {
-
-
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    private UserLoginTask mAuthTask = null;
-
-    // UI references.
-    private AutoCompleteTextView mNumerView;
-    private EditText mPasswordView;
-    private EditText mPasswordView2;
+    private RegisterConf.UserLoginTask mAuthTask = null;
+    private EditText token;
+    private Button buttonR;
     private View mProgressView;
     private View mLoginFormView;
-
+    String numer;
 
     SharedPreferences sharedPref;
     String cookieFromPref;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        // Set up the login form.
-        mNumerView = (AutoCompleteTextView) findViewById(R.id.numer);
+        setContentView(R.layout.activity_register_conf);
 
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView2 = (EditText) findViewById(R.id.password2);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-
+        token = (EditText) findViewById(R.id.token);
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
-        mRegisterButton.setOnClickListener(new OnClickListener() {
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
             }
         });
-
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-
-
-        // Initializing a String Array
-        String[] ladowanie = new String[]{
-                getString(R.string.ladowanie),
-        };
-
-
 
         sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         cookieFromPref = sharedPref.getString("tajneCookie","null");
@@ -104,8 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
-
     }
+
 
     public boolean isOnline() {
         ConnectivityManager cm =
@@ -121,43 +82,20 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Reset errors.
-        mNumerView.setError(null);
-        mPasswordView.setError(null);
+        token.setError(null);
+
 
         // Store values at the time of the login attempt.
-        String numer = mNumerView.getText().toString();
-        String password = mPasswordView.getText().toString();
-        String password2 = mPasswordView2.getText().toString();
-
+        String tokenTXT = token.getText().toString();
+        Intent intent = getIntent();
+         numer =intent.getStringExtra("numer");
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password)) {
-            mPasswordView.setError(getString(R.string.error_field_required));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-        if (!TextUtils.isEmpty(password) && !password.equals(password2)) {
-            mPasswordView.setError(getString(R.string.error_takiesame));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(numer)) {
-            mNumerView.setError(getString(R.string.error_field_required));
-            focusView = mNumerView;
-            cancel = true;
-        } else if (!isNumerValid(numer)) {
-
-            mNumerView.setError(getString(R.string.error_invalid_email));
-            focusView = mNumerView;
+        if (TextUtils.isEmpty(tokenTXT)) {
+            token.setError(getString(R.string.error_field_required));
+            focusView = token;
             cancel = true;
         }
 
@@ -169,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(numer, password);
+            mAuthTask = new RegisterConf.UserLoginTask(tokenTXT);
             mAuthTask.execute((Void) null);
         }
     }
@@ -228,21 +166,21 @@ public class RegisterActivity extends AppCompatActivity {
 
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private String METHOD_NAME = "Rejestracja";
+        private String METHOD_NAME = "RejstracjaPotwierdzenie";
         private static final String NAMESPACE = "http://tempuri.org/";
         private static final String URL = "http://77.245.247.158:2196/Service1.svc";
-        String SOAP_ACTION = "http://tempuri.org/IService1/Rejestracja";
-            String error;
+        String SOAP_ACTION = "http://tempuri.org/IService1/RejstracjaPotwierdzenie";
+        String error;
         String cookie = "false";
         Boolean jest = false;
         String mNumer;
-        String mPassword;
+        String mToken;
 
 
-        UserLoginTask(String email, String password) {
-            mNumer = email;
-            mPassword = password;
+        UserLoginTask(String token) {
 
+            mToken= token;
+            mNumer = numer;
         }
         @Override
         protected void onPreExecute() {
@@ -255,63 +193,8 @@ public class RegisterActivity extends AppCompatActivity {
             try {
 
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-
-                request.addProperty("indeks",mNumer);
-                request.addProperty("haslo",mPassword);
-
-
-
-//                PropertyInfo p_indeks = new PropertyInfo();
-//                p_indeks.setName("indeks");
-//                p_indeks.setValue("0000");
-//                p_indeks.setType(PropertyInfo.STRING_CLASS);
-//                request.addProperty(p_indeks);
-//
-//
-//
-//                PropertyInfo h = new PropertyInfo();
-//                h.setName("haslo");
-//                h.setValue(mPassword);
-//                h.setType(String.class);
-//                request.addProperty(h);
-//
-//
-//                PropertyInfo k = new PropertyInfo();
-//                k.setName("kierunek");
-//                k.setValue(kierunek);
-//                k.setType(PropertyInfo.INTEGER_CLASS);
-//                request.addProperty(k);
-//
-//
-//                PropertyInfo r = new PropertyInfo();
-//                r.setName("rok");
-//                r.setValue(rok);
-//                r.setType(PropertyInfo.INTEGER_CLASS);
-//                request.addProperty(r);
-//
-//                PropertyInfo gw = new PropertyInfo();
-//                gw.setName("grupaW");
-//                gw.setValue(grupaw);
-//                gw.setType(PropertyInfo.INTEGER_CLASS);
-//                request.addProperty(gw);
-//
-//                PropertyInfo gl = new PropertyInfo();
-//                gl.setName("grupaL");
-//                gl.setValue(grupal);
-//                gl.setType(PropertyInfo.INTEGER_CLASS);
-//                request.addProperty(gl);
-//
-//                PropertyInfo pro = new PropertyInfo();
-//                pro.setName("promotor");
-//                pro.setValue(promo);
-//                pro.setType(PropertyInfo.INTEGER_CLASS);
-//                request.addProperty(pro);
-//
-//                PropertyInfo specjal = new PropertyInfo();
-//                specjal.setName("specjalnosc");
-//                specjal.setValue(spec);
-//                specjal.setType(PropertyInfo.INTEGER_CLASS);
-//                request.addProperty(specjal);
+                request.addProperty("numer",mNumer);
+                request.addProperty("token",mToken);
 
 
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
@@ -347,9 +230,9 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
 
-            if(resultData.equals("jest") ){
+            if(resultData.equals("false") ){
 
-               jest= true;
+                jest= true;
                 return false;
             }
             if (resultData.contains("ERR")  ) {
@@ -369,23 +252,23 @@ public class RegisterActivity extends AppCompatActivity {
             showProgress(false);
             if(jest){
                 showProgress(false);
-                Toast.makeText(RegisterActivity.this, "Istnieje już konto z takim numerem indeksu.",
+                Toast.makeText(RegisterConf.this, "Błędny token.",
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
-                Toast.makeText(RegisterActivity.this, cookie,
+                Toast.makeText(RegisterConf.this, cookie,
                         Toast.LENGTH_LONG).show();
 
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("numer", cookie);
+                editor.putString("tajneCookie", cookie);
                 editor.commit();
-                Intent intent = new Intent(RegisterActivity.this, RegisterConf.class);
-                intent.putExtra("numer",cookie);
+                Intent intent = new Intent(RegisterConf.this, MainActivity.class);
+                intent.putExtra("tajneCookie",cookie);
                 startActivity(intent);
                 finish();
             } else {
                 showProgress(false);
-                Toast.makeText(RegisterActivity.this, "Błąd !",
+                Toast.makeText(RegisterConf.this, "Błąd !",
                         Toast.LENGTH_LONG).show();
             }
         }
@@ -396,5 +279,7 @@ public class RegisterActivity extends AppCompatActivity {
             showProgress(false);
         }
     }
-}
 
+
+
+}

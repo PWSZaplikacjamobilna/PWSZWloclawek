@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Kryptografia"
+                android:text="@string/ladowanie"
                 android:layout_marginTop="10dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp" />
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Laboratorium, Sala 302"
+                android:text="@string/ladowanie"
                 android:layout_below="@+id/zajecieNext"
                 android:layout_alignStart="@+id/zajecieNext" />
 
@@ -80,7 +80,7 @@
                 android:id="@+id/dzienNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="17.10.2016"
+                android:text="----"
                 android:layout_alignBaseline="@+id/typsalaNext"
                 android:layout_alignBottom="@+id/typsalaNext"
                 android:layout_alignEnd="@+id/godzinyNext" />
@@ -89,7 +89,7 @@
                 android:id="@+id/etaNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ETA: 5 dni"
+                android:text="----"
                 android:layout_below="@+id/dzienNext"
                 android:layout_alignEnd="@+id/dzienNext" />
 
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="18:00 - 19:00"
+                android:text="---"
                 android:layout_above="@+id/typsalaNext"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="13dp" />
@@ -158,7 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Kryptografia "
+                android:text="@string/ladowanie"
                 android:layout_marginTop="10dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp" />
@@ -168,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Wykład, Sala 304"
+                android:text="@string/ladowanie"
                 android:layout_below="@+id/zajecieNow"
                 android:layout_alignStart="@+id/zajecieNow" />
 
@@ -184,7 +184,7 @@
             android:id="@+id/dzienNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17.10.2016"
+            android:text="----"
                 android:layout_alignBaseline="@+id/typsalaNow"
                 android:layout_alignBottom="@+id/typsalaNow"
                 android:layout_alignEnd="@+id/godzinaNow" />
@@ -193,7 +193,7 @@
                 android:id="@+id/etaNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ETA: 5 dni"
+                android:text="----"
                 android:layout_below="@+id/dzienNow"
                 android:layout_alignEnd="@+id/dzienNow" />
 
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="15:00 - 16:00"
+                android:text="----"
                 android:layout_above="@+id/typsalaNow"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="13dp" />

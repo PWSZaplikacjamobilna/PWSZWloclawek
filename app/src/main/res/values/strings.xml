@@ -10,6 +10,8 @@
     <string name="titlehome">Strona główna</string>
     <string name="schoolplantabbed">Building plan</string>
 
+    <string name="tokenInfo">Token has been send on mail :(index@pwsz.wloclawek.pl)</string>
+    <string name="token">Token</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Index number</string>
     <string name="prompt_password">Password</string>
