@@ -6,25 +6,13 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -34,47 +22,20 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-import org.xmlpull.v1.XmlSerializer;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 
-public class LoginActivity extends AppCompatActivity  {
+public class ChangePassword extends AppCompatActivity {
 
-
-
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
-    private static  String METHOD_NAME = "Logowanie";
-//  private static final String METHOD_NAME = "HelloWorld";
-
-    private static final String NAMESPACE = "http://tempuri.org/";
-//  private static final String NAMESPACE = "http://tempuri.org";
-
-    private static final String URL = "http://77.245.247.158:2196/Service1.svc";
-//  private static final String URL = "http://192.168.0.2:8080/webservice1  /Service1.asmx";
-
-     String SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
-    //  final String SOAP_ACTION = "http://tempuri.org/HelloWorld";
-
-    Locale myLocale;
-
-
-    TextView tv;
-    StringBuilder sb;
-    private XmlSerializer writer;
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -82,33 +43,27 @@ public class LoginActivity extends AppCompatActivity  {
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private EditText mNumerView;
+    private AutoCompleteTextView mNumerView;
     private EditText mPasswordView;
+    private EditText mPasswordView2;
     private View mProgressView;
     private View mLoginFormView;
+
+
     SharedPreferences sharedPref;
     String cookieFromPref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_login);
-         sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
+        setContentView(R.layout.activity_change_password);
         // Set up the login form.
-        mNumerView = (EditText) findViewById(R.id.numer);
-        TextView niepam = (TextView) findViewById(R.id.textViewChange);
-        niepam.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, ChangePassword.class);
-                startActivity(intent);
-            }
-        });
-
+        mNumerView = (AutoCompleteTextView) findViewById(R.id.numer);
 
 
         mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView2 = (EditText) findViewById(R.id.password2);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -120,16 +75,8 @@ public class LoginActivity extends AppCompatActivity  {
             }
         });
 
-        Button mNumerInButton = (Button) findViewById(R.id.numer_sign_in_button);
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-               startActivity(intent);
-            }
-        });
-        mNumerInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -140,24 +87,25 @@ public class LoginActivity extends AppCompatActivity  {
         mProgressView = findViewById(R.id.login_progress);
 
 
+        // Initializing a String Array
+        String[] ladowanie = new String[]{
+                getString(R.string.ladowanie),
+        };
+
+
+
+        sharedPref =  getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         cookieFromPref = sharedPref.getString("tajneCookie","null");
 
-        Toast.makeText(this,"Cookie"+ cookieFromPref,
-                Toast.LENGTH_LONG).show();
-        Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
-        if(!isOnline()){
+        if (!isOnline()) {
 
             Toast.makeText(this, "Brak połączenia z internetem !",
                     Toast.LENGTH_LONG).show();
         }
 
 
-        if(!cookieFromPref.equals("null")){
-            mAuthTask = new UserLoginTask(cookieFromPref);
-            mAuthTask.execute((Void) null);
-        }
-    }
 
+    }
 
     public boolean isOnline() {
         ConnectivityManager cm =
@@ -165,6 +113,8 @@ public class LoginActivity extends AppCompatActivity  {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
+
+
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -177,13 +127,24 @@ public class LoginActivity extends AppCompatActivity  {
         // Store values at the time of the login attempt.
         String numer = mNumerView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String password2 = mPasswordView2.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView;
+            cancel = true;
+        }
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel = true;
+        }
+        if (!TextUtils.isEmpty(password) && !password.equals(password2)) {
+            mPasswordView.setError(getString(R.string.error_takiesame));
             focusView = mPasswordView;
             cancel = true;
         }
@@ -193,7 +154,8 @@ public class LoginActivity extends AppCompatActivity  {
             mNumerView.setError(getString(R.string.error_field_required));
             focusView = mNumerView;
             cancel = true;
-        } else if (!isEmailValid(numer)) {
+        } else if (!isNumerValid(numer)) {
+
             mNumerView.setError(getString(R.string.error_invalid_email));
             focusView = mNumerView;
             cancel = true;
@@ -206,15 +168,15 @@ public class LoginActivity extends AppCompatActivity  {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-
+            showProgress(true);
             mAuthTask = new UserLoginTask(numer, password);
             mAuthTask.execute((Void) null);
         }
     }
 
-    private boolean isEmailValid(String email) {
+    private boolean isNumerValid(String numer) {
         //TODO: Replace this with your own logic
-        return email.length() == 4;
+        return numer.length() == 4;
     }
 
     private boolean isPasswordValid(String password) {
@@ -258,50 +220,29 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
-    public void english(View view) {
-        setLocale("en");
-    }
-    public void setLocale(String lang) {
-
-        myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-        Intent i = getBaseContext().getPackageManager()
-                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-    }
-
-    public void polish(View view) {
-        setLocale("pl");
-    }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
-        private final String mPassword;
-           Boolean success =false;
+        private String METHOD_NAME = "sendTokenChange";
+        private static final String NAMESPACE = "http://tempuri.org/";
+        private static final String URL = "http://77.245.247.158:2196/Service1.svc";
+        String SOAP_ACTION = "http://tempuri.org/IService1/sendTokenChange";
+        String error;
         String cookie = "false";
-        String numer;
-        Boolean authcookie = false;
+        Boolean jest = false;
+        String mNumer;
+        String mPassword;
+
 
         UserLoginTask(String email, String password) {
-            mEmail = email;
+            mNumer = email;
             mPassword = password;
 
-        }
-        UserLoginTask(String cookie) {
-           this.cookie = cookie;
-            authcookie = true;
-            mEmail = "null";
-            mPassword = "null";
 
         }
         @Override
@@ -311,28 +252,14 @@ public class LoginActivity extends AppCompatActivity  {
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            if(authcookie){
-                METHOD_NAME ="LogowanieCookie";
-                SOAP_ACTION = "http://tempuri.org/IService1/LogowanieCookie";
-            }else
-            {
-                METHOD_NAME ="Logowanie";
-                 SOAP_ACTION = "http://tempuri.org/IService1/Logowanie";
-            }
             String resultData = "false";
             try {
 
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-                if(!authcookie) {
-                    request.addProperty("login", mEmail);
-                    request.addProperty("haslo", mPassword);
-                }else if  (cookie != null){
 
-                    request.addProperty("cookie", cookie);
-                }else{
-                    return true;
+                request.addProperty("numer",mNumer);
 
-                }
+
 
 
 
@@ -343,33 +270,30 @@ public class LoginActivity extends AppCompatActivity  {
 
 
                 HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                androidHttpTransport.debug = true;
                 androidHttpTransport.call(SOAP_ACTION, envelope);
-                SoapPrimitive result = (SoapPrimitive)envelope.getResponse();
+                SoapPrimitive result = (SoapPrimitive) envelope.getResponse();
 
+                Log.d("dump Request: " ,androidHttpTransport.requestDump);
+                Log.d("dump response: " ,androidHttpTransport.responseDump);
                 //to get the data
                 resultData = result.toString();
-                // 0 is the first object of data
 
-                Log.i("TAG", "OK ------------------------------------------------------- " + resultData);
-
+                Log.i("TAG", "OK -------------------cahnge--------------------------- " + resultData);
 
 
             } catch (Exception e) {
-                Log.i("TAG", "ERR ------------------------------------------------------- " + e);
+                Log.i("TAG", "ERR -----------change-------------------------------- " + e);
 
 
             }
 
-            // TODO: register the new account here.
-            if(resultData.equals("false")){
 
-                success =  false;
+            if (resultData.contains("ERR")  ) {
+                error =resultData.toString();
                 return false;
-            }else{
-                Log.i("TAG", "NUMER -ONE1111--------- " + resultData.toString());
-
-                cookie = resultData.toString().substring(4);
-                numer =resultData.toString().substring(0,4);
+            } else {
+                cookie=resultData;
 
                 return true;
             }
@@ -378,26 +302,22 @@ public class LoginActivity extends AppCompatActivity  {
 
         @Override
         protected void onPostExecute(final Boolean success) {
-
             mAuthTask = null;
+            showProgress(false);
+
             if (success) {
-                Toast.makeText(LoginActivity.this, numer,
+                Toast.makeText(ChangePassword.this, mNumer,
                         Toast.LENGTH_LONG).show();
 
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("tajneCookie", cookie);
-                editor.putString("numer", numer);
-                editor.commit();
-
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(ChangePassword.this, ChangeConf.class);
+                intent.putExtra("haslo",mPassword);
+                intent.putExtra("numer",mNumer);
                 startActivity(intent);
                 finish();
-
-
             } else {
                 showProgress(false);
-                mNumerView.setError(getString(R.string.error_incorrect_passwordOrpassword));
-                mNumerView.requestFocus();
+                Toast.makeText(ChangePassword.this, "Błąd !",
+                        Toast.LENGTH_LONG).show();
             }
         }
 
