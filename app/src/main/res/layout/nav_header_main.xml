@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:srcCompat="@drawable/ic_numer_indesku"
-        android:layout_weight="0.37" />
+        android:layout_weight="0.5" />
 
     <TextView
         android:id="@+id/numer"
