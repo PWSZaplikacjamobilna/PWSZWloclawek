@@ -11,14 +11,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="49dp"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:srcCompat="@drawable/ic_numer_indesku"
+        android:layout_weight="0.37" />
 
     <TextView
         android:id="@+id/numer"
@@ -26,12 +28,16 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="----"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="19sp"
+        android:typeface="sans"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/zajecieNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student" />
+        android:text="Student"
+        android:textSize="19sp" />
 
 </LinearLayout>
