@@ -15,6 +15,7 @@
     <string name="token">Token</string>
     <string name="zmien">Zmień hasło</string>
     <string name="niepam">Nie pamiętasz hasła ?</string>
+    Forgotten account?
     <!-- Strings related to login -->
     <string name="prompt_email">Numer indeksu</string>
     <string name="prompt_password">Hasło</string>

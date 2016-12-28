@@ -107,9 +107,9 @@ ImageView myImgView;
         aktC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            if(salaA!=null){
                 int id = getResources().getIdentifier("s"+salaA.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
-               openDialog(salaA,id,budynekA);
+               openDialog(salaA,id,budynekA);}
             }
         });
 
@@ -117,9 +117,9 @@ ImageView myImgView;
         nextC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(salaN!=null){
                 int id = getResources().getIdentifier("s"+salaN.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
-                openDialog(salaN,id,budynekN);
+                openDialog(salaN,id,budynekN);}
             }
         });
 
