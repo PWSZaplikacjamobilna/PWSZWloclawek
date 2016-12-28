@@ -3,7 +3,6 @@ package pl.wloclawek.pwsz.pwszwocawek;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -33,11 +32,9 @@ import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -231,6 +228,11 @@ ImageView myImgView;
         }
         else if (id == R.id.nav_jakdojade) {
             Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_planzajec) {
+            Intent intent = new Intent(this, LessonPlanActivity.class);
             startActivity(intent);
 
         }

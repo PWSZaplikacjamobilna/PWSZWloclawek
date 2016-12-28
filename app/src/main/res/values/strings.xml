@@ -12,6 +12,7 @@
 
     <string name="tokenInfo">Token has been send on mail :(index@pwsz.wloclawek.pl)</string>
     <string name="token">Token</string>
+    <string name="plan">Lesson Plan</string>
     <string name="zmien">Change password</string>
     <string name="niepam">Forgot your password?</string>
     <!-- Strings related to login -->
