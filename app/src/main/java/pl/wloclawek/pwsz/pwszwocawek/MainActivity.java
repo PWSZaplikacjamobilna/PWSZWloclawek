@@ -1,5 +1,9 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +14,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -32,6 +37,7 @@ import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -81,7 +87,8 @@ public class MainActivity extends AppCompatActivity
     String budynekN;
     TextView txMenu;
 ImageView myImgView;
-
+    PendingIntent resultPendingIntent;
+    NotificationCompat.Builder mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -389,6 +396,9 @@ ImageView myImgView;
         public void runTest() {
             AktualneTask data2 = new AktualneTask();
             data2.execute();
+
+            ZmianaTask data3 = new ZmianaTask();
+            data3.execute();
         }
     }
 
@@ -596,6 +606,95 @@ ImageView myImgView;
                 akt.execute();
             }
         }
+
+    }
+
+
+    public class ZmianaTask extends AsyncTask<Void, Void, Boolean> {
+
+
+        private static final int REQUEST_READ_CONTACTS = 0;
+        private String METHOD_NAME = "GetUpdatedPlan";
+        private static final String NAMESPACE = "http://tempuri.org/";
+        private static final String URL = "http://77.245.247.158:2196/Service1.svc";
+        String SOAP_ACTION = "http://tempuri.org/IService1/GetUpdatedPlan";
+        String resultData;
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+                request.addProperty("kierunek", "Informatyka");
+                request.addProperty("rok", "IV");
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                        SoapEnvelope.VER11);
+                Log.e("TAG", "XXXXX-------koperta");
+                envelope.dotNet = true;
+                envelope.setOutputSoapObject(request);
+                Log.e("TAG", "XXXXX-------wysylka");
+
+
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+                androidHttpTransport.debug = true;
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                Log.e("dump Request: ", androidHttpTransport.requestDump);
+                Log.e("dump response: ", androidHttpTransport.responseDump);
+                SoapPrimitive result = (SoapPrimitive)envelope.getResponse();
+
+                //to get the data
+                resultData = result.toString();
+
+
+
+            } catch (Exception e) {
+
+                Log.e("TAG", e.toString());
+                return true;
+            }
+            return true;
+
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+
+            if (!resultData.equals("null")){
+                Toast.makeText(MainActivity.this, resultData,
+                        Toast.LENGTH_LONG).show();
+                Log.e("TAG", "ZMIANA ===================="+resultData);
+                addNotification();
+            }else
+            {
+
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+        private void addNotification() {
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(this)
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle("Nastąpiła zmiana planu !")
+                            .setContentText("Zminana planu na stronie PWSZ Włocławek");
+
+            Intent notificationIntent = new Intent(this, MainActivity.class);
+            PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            builder.setContentIntent(contentIntent);
+
+            // Add as notification
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.notify(0, builder.build());
+
+
 
     }
 
