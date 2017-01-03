@@ -1,6 +1,5 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -157,8 +155,8 @@ ImageView myImgView;
 
          dzienNow = (TextView)findViewById(R.id.dzienNow);
          godzinaNow = (TextView)findViewById(R.id.godzinaNow);
-         zajeciaNow = (TextView)findViewById(R.id.zajecieNow);
-         typsalNow = (TextView)findViewById(R.id.typsalaNow);
+         zajeciaNow = (TextView)findViewById(R.id.nazwaEvent);
+         typsalNow = (TextView)findViewById(R.id.OpisEvent);
          dzienNext = (TextView)findViewById(R.id.dzienNext);
          godzinNext = (TextView)findViewById(R.id.godzinyNext);
          typssalNext = (TextView)findViewById(R.id.typsalaNext);
@@ -202,7 +200,7 @@ ImageView myImgView;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
+        // Handle action bar item_lesson clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
@@ -220,7 +218,7 @@ ImageView myImgView;
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation view item_lesson clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_wyloguj) {
@@ -244,6 +242,12 @@ ImageView myImgView;
             startActivity(intent);
 
         }
+        else if (id == R.id.nav_terminarz) {
+            Intent intent = new Intent(this, AllEvents.class);
+            startActivity(intent);
+
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -581,21 +585,27 @@ ImageView myImgView;
                 String godz1 = aktualnedata[next].GodzinaRoz.substring(11).substring(0, 5);
                 String godz2 = aktualnedata[next].GodzinaZak.substring(11).substring(0, 5);
                 godzinNext.setText(godz1 + "-" + godz2);
-                typssalNext.setText(aktualnedata[next].typ.replace(" ", "") + ", "+getString(R.string.sala)+" " + aktualnedata[next].sala);
-                salaN=aktualnedata[next].sala;
-                budynekN=aktualnedata[next].budynek;
+                typssalNext.setText(aktualnedata[next].typ.replace(" ", "") + ", " + getString(R.string.sala) + " " + aktualnedata[next].sala);
+                salaN = aktualnedata[next].sala;
+                budynekN = aktualnedata[next].budynek;
                 wykNext.setText(aktualnedata[next].wykladowca);
-            String znak2 = aktualnedata[1].eta.substring(0,1);
-            etaNext.setText(aktualnedata[1].eta.substring(1));
-            if(znak2.equals("Z")){
-                etaNext.setTextColor(Color.YELLOW);
-            }
-            if(znak2.equals("R")){
-                etaNext.setTextColor(Color.RED);
-            }
 
-            }
+// numer dodatkowy ====================9465
+                if (aktualnedata.length >1 ) {
 
+                    String znak2 = aktualnedata[1].eta.substring(0, 1);
+                    etaNext.setText(aktualnedata[1].eta.substring(1));
+                    if (znak2.equals("Z")) {
+                        etaNext.setTextColor(Color.YELLOW);
+                    }
+                    if (znak2.equals("R")) {
+                        etaNext.setTextColor(Color.RED);
+                    }
+
+                }else{
+                    etaNext.setText("ERROR");
+                }
+            }
 
             if(success == true) {
                 NewsTask data = new NewsTask();

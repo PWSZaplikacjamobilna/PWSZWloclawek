@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> {
+public class RVAdapterLesson extends RecyclerView.Adapter<RVAdapterLesson.PersonViewHolder> {
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,8 +35,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
 
             dzienNow = (TextView) itemView.findViewById(R.id.dzienNow);
             godzinaNow = (TextView) itemView.findViewById(R.id.godzinaNow);
-            zajeciaNow = (TextView) itemView.findViewById(R.id.zajecieNow);
-            typsalNow = (TextView) itemView.findViewById(R.id.typsalaNow);
+            zajeciaNow = (TextView) itemView.findViewById(R.id.nazwaEvent);
+            typsalNow = (TextView) itemView.findViewById(R.id.OpisEvent);
             wtkNow = (TextView) itemView.findViewById(R.id.wykNow);
             etaNow = (TextView) itemView.findViewById(R.id.etaNow);
         }
@@ -46,7 +46,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
 
     List<Lesson> persons;
 
-    RVAdapter(List<Lesson> persons) {
+    RVAdapterLesson(List<Lesson> persons) {
         this.persons = persons;
     }
 
@@ -57,7 +57,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
 
     @Override
     public PersonViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_lesson, viewGroup, false);
         PersonViewHolder pvh = new PersonViewHolder(v);
         return pvh;
     }

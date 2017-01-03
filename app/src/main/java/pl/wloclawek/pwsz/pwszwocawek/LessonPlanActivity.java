@@ -112,7 +112,7 @@ int dni = 0;
     }
 
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(persons);
+        RVAdapterLesson adapter = new RVAdapterLesson(persons);
         rv.setAdapter(adapter);
 
     }

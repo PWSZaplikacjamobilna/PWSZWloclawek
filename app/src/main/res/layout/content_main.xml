@@ -154,7 +154,7 @@
 
 
             <TextView
-                android:id="@+id/zajecieNow"
+                android:id="@+id/nazwaEvent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -164,29 +164,29 @@
                 android:layout_marginStart="10dp" />
 
             <TextView
-                android:id="@+id/typsalaNow"
+                android:id="@+id/OpisEvent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/ladowanie"
-                android:layout_below="@+id/zajecieNow"
-                android:layout_alignStart="@+id/zajecieNow" />
+                android:layout_below="@+id/nazwaEvent"
+                android:layout_alignStart="@+id/nazwaEvent" />
 
             <TextView
                 android:id="@+id/wykNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ladowanie"
-                android:layout_below="@+id/typsalaNow"
-                android:layout_alignStart="@+id/typsalaNow" />
+                android:layout_below="@+id/OpisEvent"
+                android:layout_alignStart="@+id/OpisEvent" />
 
             <TextView
             android:id="@+id/dzienNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="----"
-                android:layout_alignBaseline="@+id/typsalaNow"
-                android:layout_alignBottom="@+id/typsalaNow"
+                android:layout_alignBaseline="@+id/OpisEvent"
+                android:layout_alignBottom="@+id/OpisEvent"
                 android:layout_alignEnd="@+id/godzinaNow" />
 
             <TextView
@@ -203,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="----"
-                android:layout_above="@+id/typsalaNow"
+                android:layout_above="@+id/OpisEvent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="13dp" />
 

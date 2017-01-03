@@ -64,9 +64,11 @@
         <activity android:name=".RegisterConf" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".ChangeConf" />
-        <activity android:name=".LessonPlanActivity"
-                  android:label="@string/plan"
-            ></activity>
+        <activity
+            android:name=".LessonPlanActivity"
+            android:label="@string/plan" />
+        <activity android:name=".EventAdd" />
+        <activity android:name=".AllEvents"></activity>
     </application>
 
 </manifest>
