@@ -7,10 +7,12 @@ package pl.wloclawek.pwsz.pwszwocawek;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,6 +55,18 @@ public class AllEvents extends AppCompatActivity {
         mLoginFormView = findViewById(R.id.rv);
         mProgressView = findViewById(R.id.loading_progress);
 
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddToEvent.class);
+                view.getContext().startActivity(intent);
+                finish();
+
+            }
+        });
 
 
 
@@ -210,7 +224,7 @@ public class AllEvents extends AppCompatActivity {
 
                     Event new1 = new Event();
                             new1.dzienE = pii3.getProperty(0).toString().substring(0, 10);
-                            new1.godzinaE = pii3.getProperty(0).toString().substring(0, 5);
+                            new1.godzinaE = pii3.getProperty(0).toString().substring(11).substring(0, 5);
                             new1.opisE = pii3.getProperty(8).toString();
                             new1.nazwaE = pii3.getProperty(7).toString();
 
