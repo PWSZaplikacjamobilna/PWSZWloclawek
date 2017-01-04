@@ -33,7 +33,7 @@
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
-            app:srcCompat="@drawable/phone"
+            app:srcCompat="@drawable/ic_telefon"
             android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
 
@@ -42,7 +42,7 @@
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
-            app:srcCompat="@drawable/mail"
+            app:srcCompat="@drawable/ic_mail"
   android:layout_marginRight="10dp"
 android:layout_alignParentRight="true"
 

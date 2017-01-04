@@ -271,7 +271,10 @@ int dni = 0;
 //                            }
 
 
-
+                            if (new1.wykladowca.contains("anyType")) {
+                                new1.wykladowca = pii4.getProperty(3).toString();
+                                new1.wykladowca = new1.wykladowca.replace("Seminarium -", "");
+                            }
                             if (new1.now.equals("NOW")) {
                                 now = i;
                             }
