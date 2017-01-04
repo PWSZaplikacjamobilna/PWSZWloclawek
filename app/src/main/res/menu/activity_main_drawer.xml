@@ -19,9 +19,9 @@
             android:icon="@drawable/ic_menu_jakdojade"
             android:title="@string/wheniarrive" />
         <item
-            android:id="@+id/nav_konsultacje"
-            android:icon="@drawable/ic_menu_konsultacje"
-            android:title="@string/consultations" />
+            android:id="@+id/nav_informacje"
+            android:icon="@drawable/information"
+            android:title="@string/information" />
         <item
             android:id="@+id/nav_planbudynkow"
             android:icon="@drawable/ic_menu_planbudynkow"

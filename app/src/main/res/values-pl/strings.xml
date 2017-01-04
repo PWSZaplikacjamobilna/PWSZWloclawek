@@ -50,7 +50,7 @@
     <string name="timetable">Terminarz</string>
     <string name="wheniarrive">Jak dojadę?</string>
     <string name="planbuildings">Plan budynków</string>
-    <string name="consultations">Konsultacje</string>
+    <string name="information">Informacje</string>
     <string name="contact">Kontakt</string>
     <string name="logout">Wyloguj</string>
 
@@ -78,4 +78,5 @@
     <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_contact_tabbed">Kontakt</string>
+    <string name="title_activity_information_tabbed">Informacje</string>
 </resources>

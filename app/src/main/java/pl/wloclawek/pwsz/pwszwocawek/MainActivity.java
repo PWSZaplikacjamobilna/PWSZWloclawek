@@ -253,6 +253,12 @@ ImageView myImgView;
 
         }
 
+        else if (id == R.id.nav_informacje) {
+            Intent intent = new Intent(this, InformationTabbed.class);
+            startActivity(intent);
+
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

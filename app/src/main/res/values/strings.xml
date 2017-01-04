@@ -60,7 +60,7 @@
     <string name="timetable">Timetable</string>
     <string name="wheniarrive">When I arrive?</string>
     <string name="planbuildings">Buildings plan</string>
-    <string name="consultations">Consultations</string>
+    <string name="information">Information</string>
     <string name="contact">Contact</string>
     <string name="logout">Log out</string>
 
@@ -145,4 +145,5 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_change_conf">ChangeConf</string>
     <string name="title_activity_contact_tabbed">Contact</string>
+    <string name="title_activity_information_tabbed">Information</string>
 </resources>
