@@ -476,16 +476,21 @@ ImageView myImgView;
                             for(int t=0 ; t<12 ; t++){
                     Log.e("TAG", "RRRRRR-------CHECK"+t+"---"+pii2.getProperty(t).toString());
                     }
-                    new1.GodzinaRoz = pii2.getProperty(11).toString();
+                    new1.GodzinaRoz = pii2.getProperty(13).toString();
                     new1.GodzinaZak = pii2.getProperty(1).toString();
                     new1.budynek = pii2.getProperty(0).toString();
-                    new1.przedmiot = pii2.getProperty(6).toString();
-                    new1.sala = pii2.getProperty(9).toString();
-                    new1.typ = pii2.getProperty(7).toString();
-                    new1.wykladowca = pii2.getProperty(4).toString();
-                    new1.now = pii2.getProperty(10).toString();
-                    new1.eta = pii2.getProperty(3).toString();
-                    new1.numer =pii2.getProperty(5).toString();
+                    new1.przedmiot = pii2.getProperty(7).toString();
+                    new1.sala = pii2.getProperty(10).toString();
+                    new1.typ = pii2.getProperty(8).toString();
+                    new1.wykladowca = pii2.getProperty(5).toString();
+                    new1.now = pii2.getProperty(11).toString();
+                    new1.eta = pii2.getProperty(4).toString();
+                    new1.numer =pii2.getProperty(6).toString();
+
+                    for(int f = 0; f<14; f++){
+                        Log.e("TAG","%%%%%%%%%prop ----------"+f+"----"+pii2.getProperty(f).toString());
+                    }
+
                     if(new1.now.equals("NOW")){
                         now = i;
                     }

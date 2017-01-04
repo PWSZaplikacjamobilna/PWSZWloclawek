@@ -255,21 +255,23 @@ int dni = 0;
 
 
                             AktualneZajecia new1 = new AktualneZajecia();
-                            new1.GodzinaRoz = pii4.getProperty(11).toString();
+                            new1.GodzinaRoz = pii4.getProperty(13).toString();
                             new1.GodzinaZak = pii4.getProperty(1).toString();
                             new1.budynek = pii4.getProperty(0).toString();
-                            new1.przedmiot = pii4.getProperty(6).toString();
-                            new1.sala = pii4.getProperty(9).toString();
-                            new1.typ = pii4.getProperty(7).toString();
-                            new1.wykladowca = pii4.getProperty(4).toString();
-                            new1.now = pii4.getProperty(10).toString();
+                            new1.przedmiot = pii4.getProperty(7).toString();
+                            new1.sala = pii4.getProperty(10).toString();
+                            new1.typ = pii4.getProperty(8).toString();
+                            new1.wykladowca = pii4.getProperty(5).toString();
+                            new1.now = pii4.getProperty(11).toString();
                             new1.eta = "ETA";
-                            new1.numer = pii4.getProperty(5).toString();
+                            new1.numer = pii4.getProperty(6).toString();
 
-                            if (new1.wykladowca.contains("anyType")) {
-                                new1.wykladowca = pii4.getProperty(3).toString();
-                                new1.wykladowca = new1.wykladowca.replace("Seminarium -", "");
-                            }
+//                            for(int f = 0; f<14; f++){
+//                                Log.e("TAG","%%%%%%%%%prop ----------"+f+"----"+pii4.getProperty(f).toString());
+//                            }
+
+
+
                             if (new1.now.equals("NOW")) {
                                 now = i;
                             }
