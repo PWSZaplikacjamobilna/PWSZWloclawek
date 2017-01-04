@@ -148,7 +148,7 @@ ImageView myImgView;
 
          listView = (ListView) findViewById(R.id.listView13);
         String[] values = new String[]{"Ładowanie ...",
-                "Ładowanie ......",
+                "Ładowanie ...",
                 "Ładowanie ...",
                 "Ładowanie ...",
         };
@@ -244,6 +244,11 @@ ImageView myImgView;
         }
         else if (id == R.id.nav_terminarz) {
             Intent intent = new Intent(this, AllEvents.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_kontakt) {
+            Intent intent = new Intent(this, ContactTabbed.class);
             startActivity(intent);
 
         }
@@ -553,7 +558,7 @@ ImageView myImgView;
                 String znak = aktualnedata[0].eta.substring(0,1);
                   etaNow.setText(aktualnedata[0].eta.substring(1));
                   if(znak.equals("Z")){
-                      etaNow.setTextColor(Color.YELLOW);
+                      etaNow.setTextColor(Color.rgb(190,76,32));
                   }
                   if(znak.equals("R")){
                       etaNow.setTextColor(Color.RED);
@@ -569,9 +574,9 @@ ImageView myImgView;
 
 
 
-
-                zajeciaNext.setText("       Na dzisiaj koniec HEHEUHEHAHEAHUEH");
-
+                zajeciaNext.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+                zajeciaNext.setText(getString(R.string.end));
+                etaNext.setText("");
                 dzienNext.setText("");
 
                 godzinNext.setText("");
@@ -601,7 +606,7 @@ ImageView myImgView;
                     String znak2 = aktualnedata[1].eta.substring(0, 1);
                     etaNext.setText(aktualnedata[1].eta.substring(1));
                     if (znak2.equals("Z")) {
-                        etaNext.setTextColor(Color.YELLOW);
+                        etaNext.setTextColor(Color.rgb(190,76,32));
                     }
                     if (znak2.equals("R")) {
                         etaNext.setTextColor(Color.RED);

@@ -18,6 +18,7 @@
     Forgotten account?
     <!-- Strings related to login -->
     <string name="prompt_email">Numer indeksu</string>
+    <string name="end">Na dzisiaj koniec zajęć</string>
     <string name="prompt_password">Hasło</string>
     <string name="prompt_password2">Powtórz hasło</string>
     <string name="kierunek">Kierunek</string>
@@ -76,4 +77,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_contact_tabbed">Kontakt</string>
 </resources>

@@ -4,6 +4,7 @@
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -53,7 +54,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SchoolPlanTabbed"
             android:label="@string/schoolplantabbed"
@@ -68,7 +70,12 @@
             android:name=".LessonPlanActivity"
             android:label="@string/plan" />
         <activity android:name=".EventAdd" />
-        <activity android:name=".AllEvents"></activity>
+        <activity android:name=".AllEvents" />
+        <activity
+            android:name=".ContactTabbed"
+            android:label="@string/title_activity_contact_tabbed"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
