@@ -49,8 +49,8 @@ public class RecyclerAdapterContact extends RecyclerView.Adapter<RecyclerAdapter
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.text.setText(lista.get(position));
-        holder.tel.setImageResource(R.drawable.ic_telefon);
-        holder.mail.setImageResource(R.drawable.ic_mail);
+        holder.tel.setImageResource(R.drawable.tel);
+        holder.mail.setImageResource(R.drawable.email);
 
 
     }
