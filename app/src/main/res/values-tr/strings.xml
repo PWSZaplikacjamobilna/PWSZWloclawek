@@ -4,6 +4,8 @@
     <string name="navigation_drawer_open">Menüyü aç</string>
     <string name="navigation_drawer_close">Menüyü kapat</string>
 
+    <string name="powiadomienia">Değişim takvimi bildirimi</string>
+
     <string name="action_settings">Ayarlar</string>
     <string name="title_activity_login">Oturum aç</string>
     <string name="home">Ev</string>

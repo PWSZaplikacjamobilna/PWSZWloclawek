@@ -1,19 +1,19 @@
 ﻿<resources>
-    <string name="app_name">PWSZ W�oc�awek</string>
+    <string name="app_name">PWSZ Wloclawek</string>
 
-    <string name="navigation_drawer_open">Men� �ffnen</string>
-    <string name="navigation_drawer_close">Men� schlie�en</string>
+    <string name="navigation_drawer_open">Menü öffnen</string>
+    <string name="navigation_drawer_close">Menü schließen</string>
 
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_login">Anmeldung</string>
     <string name="home">Hauptseite</string>
     <string name="titlehome">Hauptseite Title</string>
-    <string name="schoolplantabbed">Geb�ude planen</string>
+    <string name="schoolplantabbed">Gebäude planen</string>
     <string name="end">Ende</string>
     <string name="tokenInfo">-Token wurde auf E-Mail senden: (index@pwsz.wloclawek.pl)</string>
     <string name="token">Zeichen</string>
     <string name="plan">Zeitplan</string>
-    <string name="zmien">Kennwort �ndern</string>
+    <string name="zmien">Kennwort ändern</string>
     <string name="niepam">Sie haben Ihr Passwort vergessen?</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Index number</string>
@@ -23,23 +23,23 @@
     <string name="action_sign_in">Einloggen</string>
     <string name="register">Registrieren</string>
     <string name="action_sign_in_short">Anmelden</string>
-    <string name="error_invalid_email">Indexnummer ist ung�ltig</string>
+    <string name="error_invalid_email">Indexnummer ist ungültig</string>
     <string name="error_invalid_password">Das Passwort ist zu kurz</string>
     <string name="error_incorrect_password">Das Passwort ist inkorrekt</string>
-    <string name="error_field_required">Dieses Feld wird ben�tigt</string>
+    <string name="error_field_required">Dieses Feld wird benötigt</string>
     <string name="error_incorrect_passwordOrpassword">Login oder Passwort is inkorrekt</string>
-    <string name="error_takiesame">Passw�rter sind unterschiedlich</string>
+    <string name="error_takiesame">Passwörter sind unterschiedlich</string>
     <string name="ladowanie">Laden ...</string>
-    <string name="wybGrupaL">Laboratorium w�hlen ...</string>
-    <string name="wybGrupaW">Vorlesung ausw�hlen...</string>
-    <string name="wybPromo">w�hlen Promotor ...</string>
-    <string name="wybKier">Richtung w�hlen ...</string>
-    <string name="wybSpec">W�hlen Sie Spezialit�t ...</string>
-    <string name="wybRok">W�hlen Sie das Studienjahr ...</string>
-    <string name="selectlanguage">Sprache ausw�hlen</string>
-    <string name="selectplace">Ort ausw�hlen</string>
+    <string name="wybGrupaL">Laboratorium wählen ...</string>
+    <string name="wybGrupaW">Vorlesung auswählen...</string>
+    <string name="wybPromo">wählen Promotor ...</string>
+    <string name="wybKier">Richtung wählen ...</string>
+    <string name="wybSpec">Wählen Sie Spezialität ...</string>
+    <string name="wybRok">Wählen Sie das Studienjahr ...</string>
+    <string name="selectlanguage">Sprache auswählen</string>
+    <string name="selectplace">Ort auswählen</string>
     <string name="currentlessons">Aktuelle Lektions</string>
-    <string name="nextlessons">N�chste Lektionen</string>
+    <string name="nextlessons">Nächste Lektionen</string>
     <string name="news">Nachrichten</string>
 
     <string name="basement">Keller</string>
@@ -59,14 +59,14 @@
     <string name="schedule">Stundenplan</string>
     <string name="timetable">Zeitplan</string>
     <string name="wheniarrive">Wenn ich ankomme?</string>
-    <string name="planbuildings">Geb�udeplan</string>
+    <string name="planbuildings">Gebäudeplan</string>
     <string name="information">Information</string>
     <string name="contact">Kontakt</string>
     <string name="logout">Ausloggen</string>
 
     <string name="sala">Zimmer</string>
 
-
+    <string name="powiadomienia">Benachrichtigung über die Änderung Zeitplan</string>
     <string name="title_activity_maps">Karten</string>
     <string name="title_activity_school_plan_tabbed">SchulePlanTabbed</string>
     <string name="section_format">Hallo Welt aus Abschnitt:% 1 $ d</string>
@@ -78,17 +78,17 @@
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_social_recommendations">Soziale Empfehlungen aktivieren</string>
-    <string name="pref_description_social_recommendations">Empfehlungen f�r Ansprechpartner
-�������� Basierend auf Ihrem Nachrichtenverlauf
+    <string name="pref_description_social_recommendations">Empfehlungen für Ansprechpartner
+         Basierend auf Ihrem Nachrichtenverlauf
     </string>
 
     <string name="pref_title_display_name">Anzeigename</string>
     <string name="pref_default_display_name">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Freunde zu Nachrichten hinzuf�gen</string>
+    <string name="pref_title_add_friends_to_messages">Freunde zu Nachrichten hinzufügen</string>
     <string-array name="pref_example_list_titles">
         <item>Immer</item>
-        <item>Wenn m�glich</item>
+        <item>Wenn möglich</item>
         <item>Nimer</item>
     </string-array>
     <string-array name="pref_example_list_values">
@@ -143,7 +143,7 @@
     <string name="pref_ringtone_silent">Still</string>
 
     <string name="pref_title_vibrate">Vibrieren</string>
-    <string name="title_activity_change_conf">�ndern Conf</string>
+    <string name="title_activity_change_conf">Ändern Conf</string>
     <string name="title_activity_contact_tabbed">Kontakt</string>
     <string name="title_activity_information_tabbed">Information</string>
 </resources>

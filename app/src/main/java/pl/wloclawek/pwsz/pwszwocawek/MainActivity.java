@@ -711,6 +711,7 @@ ImageView myImgView;
 
 
         private void addNotification() {
+        if(sharedPref.getBoolean("noti", false)) {
             NotificationCompat.Builder builder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(R.mipmap.ic_launcher)
@@ -726,7 +727,7 @@ ImageView myImgView;
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             manager.notify(0, builder.build());
 
-
+        }
 
     }
 
