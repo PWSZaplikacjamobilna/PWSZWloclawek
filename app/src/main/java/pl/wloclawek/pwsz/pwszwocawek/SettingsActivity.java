@@ -39,4 +39,11 @@ public class SettingsActivity extends AppCompatActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
+
+    public void turkish(View view) {
+        setLocale("tr");
+    }
+
+    public void germany(View view) {setLocale("de");
+    }
 }

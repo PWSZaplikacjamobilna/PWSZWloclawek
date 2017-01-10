@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static pl.wloclawek.pwsz.pwszwocawek.R.id.imageView;
 
 /**
  * Created by EmilK on 2016-11-30.

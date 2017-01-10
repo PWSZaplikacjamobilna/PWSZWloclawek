@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBack"
     tools:context="pl.wloclawek.pwsz.pwszwocawek.SettingsActivity">
 
     <RelativeLayout
@@ -30,16 +31,35 @@
             android:layout_height="30dp"
      android:layout_alignParentRight="true"
             android:onClick="polish"
-   android:layout_marginRight="40dp"
+   android:layout_marginRight="120dp"
             android:id="@+id/poland" />
 
         <ImageView
-            android:src="@drawable/england"
+        android:src="@drawable/england"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+            android:layout_marginRight="80dp"
+        android:onClick="english"
+        android:id="@+id/england" />
+
+        <ImageView
+            android:src="@drawable/turkish"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:onClick="english"
-            android:id="@+id/england" />
+            android:onClick="turkish"
+            android:layout_marginRight="40dp"
+            android:id="@+id/turkish" />
+
+        <ImageView
+            android:src="@drawable/germany"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:onClick="germany"
+
+            android:id="@+id/germany" />
 
     </RelativeLayout>
 

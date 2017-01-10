@@ -39,12 +39,17 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.io.ByteArrayInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -99,6 +104,7 @@ ImageView myImgView;
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -666,11 +672,10 @@ ImageView myImgView;
                 androidHttpTransport.call(SOAP_ACTION, envelope);
                 Log.e("dump Request: ", androidHttpTransport.requestDump);
                 Log.e("dump response: ", androidHttpTransport.responseDump);
-                SoapPrimitive result = (SoapPrimitive)envelope.getResponse();
+                SoapPrimitive result = (SoapPrimitive) envelope.getResponse();
 
                 //to get the data
                 resultData = result.toString();
-
 
 
             } catch (Exception e) {
@@ -684,22 +689,23 @@ ImageView myImgView;
 
         @Override
         protected void onPostExecute(final Boolean success) {
+            try {
+                if (!resultData.equals("null")) {
+                    Toast.makeText(MainActivity.this, resultData,
+                            Toast.LENGTH_LONG).show();
+                    Log.e("TAG", "ZMIANA ====================" + resultData);
+                    addNotification();
+                } else {
 
-            if (!resultData.equals("null")){
-                Toast.makeText(MainActivity.this, resultData,
-                        Toast.LENGTH_LONG).show();
-                Log.e("TAG", "ZMIANA ===================="+resultData);
-                addNotification();
-            }else
-            {
+                }
 
+            } catch (Exception e) {
+                Log.e("TAG", "ERROR ====================" + e);
             }
-
         }
 
+
     }
-
-
 
 
 

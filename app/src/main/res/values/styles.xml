@@ -23,5 +23,15 @@
         <item name="android:textColorSecondary">@color/colorDivider</item>
     </style>
 
+    <style name="MyCustomTheme" parent="style/AppTheme.NoActionBar">
+        <item name="android:actionOverflowButtonStyle">@style/MyCustomTheme.OverFlow</item>
+
+    </style>
+
+    <style name="MyCustomTheme.OverFlow">
+        <item name="android:src">@drawable/ic_menu_ustawienia</item>
+
+    </style>
+
 
 </resources>

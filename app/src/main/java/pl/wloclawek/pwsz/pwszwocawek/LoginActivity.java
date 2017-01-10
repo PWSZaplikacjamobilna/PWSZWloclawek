@@ -279,6 +279,13 @@ public class LoginActivity extends AppCompatActivity  {
         setLocale("pl");
     }
 
+    public void turkish(View view) {
+        setLocale("tr");
+    }
+
+    public void germany(View view) {setLocale("de");
+    }
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.

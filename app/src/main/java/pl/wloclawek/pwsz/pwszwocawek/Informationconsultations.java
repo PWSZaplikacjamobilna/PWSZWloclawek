@@ -33,9 +33,9 @@ public class Informationconsultations extends Fragment  {
         Button b6 = (Button) rootView.findViewById(R.id.button6k);
         Button b7 = (Button) rootView.findViewById(R.id.button7k);
 
-        b1.setText("Dyżury Zakładu Fiilologii Angielskiej, Pedagogiki oraz Studium Języków Obcych ");
+        b1.setText("Dyżury Zakładu Filologii Angielskiej, Pedagogiki oraz Studium Języków Obcych ");
         b2.setText("Dyżury pracowników dydaktycznych Zakładu Administracji w semestrze zimowym 2016/2017");
-        b3.setText("yżury pracowników dydaktycznych Zakładu Zarządzania  ");
+        b3.setText("Dyżury pracowników dydaktycznych Zakładu Zarządzania  ");
         b4.setText("Dyżury pracowników dydaktycznych Zakładu Informatyki");
         b5.setText("Dyżury pracowników dydaktycznych Zakładu Mechaniki i budowy maszyn");
         b6.setText("Dyżury pracowników dydaktycznych Instytutu Nauk o Zdrowiu");
