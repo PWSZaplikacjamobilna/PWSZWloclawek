@@ -1,0 +1,149 @@
+﻿<resources>
+    <string name="app_name">PWSZ Wloclawek</string>
+
+    <string name="navigation_drawer_open">Menü öffnen</string>
+    <string name="navigation_drawer_close">Menü schließen</string>
+
+    <string name="action_settings">Einstellungen</string>
+    <string name="title_activity_login">Anmeldung</string>
+    <string name="home">Hauptseite</string>
+    <string name="titlehome">Hauptseite Title</string>
+    <string name="schoolplantabbed">Gebäude planen</string>
+    <string name="end">Ende</string>
+    <string name="tokenInfo">-Token wurde auf E-Mail senden: (index@pwsz.wloclawek.pl)</string>
+    <string name="token">Zeichen</string>
+    <string name="plan">Zeitplan</string>
+    <string name="zmien">Kennwort ändern</string>
+    <string name="niepam">Sie haben Ihr Passwort vergessen?</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Index number</string>
+    <string name="prompt_password">Kennwort</string>
+    <string name="prompt_password2">Passwort wiederholen</string>
+    <string name="kierunek">Richtung</string>
+    <string name="action_sign_in">Einloggen</string>
+    <string name="register">Registrieren</string>
+    <string name="action_sign_in_short">Anmelden</string>
+    <string name="error_invalid_email">Indexnummer ist ungültig</string>
+    <string name="error_invalid_password">Das Passwort ist zu kurz</string>
+    <string name="error_incorrect_password">Das Passwort ist inkorrekt</string>
+    <string name="error_field_required">Dieses Feld wird benötigt</string>
+    <string name="error_incorrect_passwordOrpassword">Login oder Passwort is inkorrekt</string>
+    <string name="error_takiesame">Passwörter sind unterschiedlich</string>
+    <string name="ladowanie">Laden ...</string>
+    <string name="wybGrupaL">Laboratorium wählen ...</string>
+    <string name="wybGrupaW">Vorlesung auswählen...</string>
+    <string name="wybPromo">wählen Promotor ...</string>
+    <string name="wybKier">Richtung wählen ...</string>
+    <string name="wybSpec">Wählen Sie Spezialität ...</string>
+    <string name="wybRok">Wählen Sie das Studienjahr ...</string>
+    <string name="selectlanguage">Sprache auswählen</string>
+    <string name="selectplace">Ort auswählen</string>
+    <string name="currentlessons">Aktuelle Lektions</string>
+    <string name="nextlessons">Nächste Lektionen</string>
+    <string name="news">Nachrichten</string>
+
+    <string name="basement">Keller</string>
+    <string name="groundfloor">Erdgeschoss</string>
+    <string name="Ifloor">Erste Erdgeschoss</string>
+    <string name="IIfloor">Zweite Erdgeschoss</string>
+    <string name="IIIfloor">Dritte Erdgeschoss</string>
+    <string name="IVfloor">Vierte Erdgeschoss</string>
+    <string name="radio1">Typ normal ist</string>
+    <string name="radio2">Art des Satelliten</string>
+    <string name="groundfloor_zawisle">Erdgeschoss</string>
+    <string name="Ifloor_zawisle">Erste Erdgeschoss</string>
+    <string name="IIfloor_zawisle">Zweite Erdgeschoss</string>
+    <string name="groundfloor2_zawisle">Erdgeschoss Studentenhaus</string>
+
+
+    <string name="schedule">Stundenplan</string>
+    <string name="timetable">Zeitplan</string>
+    <string name="wheniarrive">Wenn ich ankomme?</string>
+    <string name="planbuildings">Gebäudeplan</string>
+    <string name="information">Information</string>
+    <string name="contact">Kontakt</string>
+    <string name="logout">Ausloggen</string>
+
+    <string name="sala">Zimmer</string>
+
+    <string name="powiadomienia">Benachrichtigung über die Änderung Zeitplan</string>
+    <string name="title_activity_maps">Karten</string>
+    <string name="title_activity_school_plan_tabbed">SchulePlanTabbed</string>
+    <string name="section_format">Hallo Welt aus Abschnitt:% 1 $ d</string>
+    <string name="title_activity_settings">Einstellungen</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Soziale Empfehlungen aktivieren</string>
+    <string name="pref_description_social_recommendations">Empfehlungen für Ansprechpartner
+         Basierend auf Ihrem Nachrichtenverlauf
+    </string>
+
+    <string name="pref_title_display_name">Anzeigename</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Freunde zu Nachrichten hinzufügen</string>
+    <string-array name="pref_example_list_titles">
+        <item>Immer</item>
+        <item>Wenn möglich</item>
+        <item>Nimer</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Datum &amp; synchronisieren</string>
+
+    <string name="pref_title_sync_frequency">Sync Frequenz</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Eintrag 1</item>
+        <item>Eintrag 2</item>
+        <item>Eintrag 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">Die Synchronisierungseinstellungen</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Benachrichtigungen</string>
+
+    <string name="pref_title_new_message_notifications">Neue Nachrichtenbenachrichtigungen</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Still</string>
+
+    <string name="pref_title_vibrate">Vibrieren</string>
+    <string name="title_activity_change_conf">Ändern Conf</string>
+    <string name="title_activity_contact_tabbed">Kontakt</string>
+    <string name="title_activity_information_tabbed">Information</string>
+</resources>

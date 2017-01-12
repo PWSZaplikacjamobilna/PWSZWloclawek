@@ -292,6 +292,13 @@ public class LoginActivity extends AppCompatActivity  {
         setLocale("pl");
     }
 
+    public void turkish(View view) {
+        setLocale("tr");
+    }
+
+    public void germany(View view) {setLocale("de");
+    }
+
 
     public class PingTask extends AsyncTask<Void, Void, Boolean> {
 

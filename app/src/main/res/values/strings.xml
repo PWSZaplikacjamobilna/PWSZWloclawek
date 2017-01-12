@@ -65,7 +65,7 @@
     <string name="logout">Log out</string>
 
     <string name="sala">room</string>
-
+    <string name="powiadomienia">Timetable change notification</string>
 
     <string name="title_activity_maps">Maps</string>
     <string name="title_activity_school_plan_tabbed">SchoolPlanTabbed</string>

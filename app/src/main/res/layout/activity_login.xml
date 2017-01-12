@@ -43,14 +43,14 @@
                 android:text="@string/selectlanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="100dp"
                 android:id="@+id/textView" />
 
             <ImageView
                 android:src="@drawable/poland"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginLeft="270dp"
+                android:layout_marginLeft="210dp"
                 android:onClick="polish"
                  android:id="@+id/poland" />
 
@@ -58,9 +58,25 @@
                 android:src="@drawable/england"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginLeft="300dp"
+                android:layout_marginLeft="240dp"
                 android:onClick="english"
                 android:id="@+id/england" />
+
+            <ImageView
+                android:src="@drawable/turkish"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="270dp"
+                android:onClick="turkish"
+                android:id="@+id/turkish" />
+
+            <ImageView
+                android:src="@drawable/germany"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="300dp"
+                android:onClick="germany"
+                android:id="@+id/germany" />
 
         </RelativeLayout>
 

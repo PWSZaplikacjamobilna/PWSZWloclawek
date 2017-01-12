@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
 
 public class SchoolPlanTabbed extends AppCompatActivity  {
 
@@ -44,6 +45,12 @@ public class SchoolPlanTabbed extends AppCompatActivity  {
         tabLayout.setupWithViewPager(mViewPager);
 
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
     /**
