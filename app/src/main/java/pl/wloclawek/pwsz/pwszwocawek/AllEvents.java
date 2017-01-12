@@ -83,13 +83,21 @@ public class AllEvents extends AppCompatActivity {
         persons = new ArrayList<>();
         boolean nowy = true;
         String nowydzien = " ";
+try {
+    for (Event e : lista
+            ) {
+        persons.add(new Event(e.nazwaE, e.opisE, e.dzienE, e.godzinaE));
+    }
 
-        for (Event e : lista
-                ) {
-            persons.add(new Event(e.nazwaE, e.opisE, e.dzienE, e.godzinaE));
-        }
+}catch (Exception e){
 
+    Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.LENGTH_LONG).show();
 
+    Intent intent = new Intent(AllEvents.this, MainActivity.class);
+    startActivity(intent);
+    finish();
+}
     }
 
 

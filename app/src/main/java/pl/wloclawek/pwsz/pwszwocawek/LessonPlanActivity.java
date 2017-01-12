@@ -7,10 +7,12 @@ package pl.wloclawek.pwsz.pwszwocawek;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,26 +69,27 @@ public class LessonPlanActivity extends AppCompatActivity {
     }
 
     private void initializeData(List<AktualneTask.AktualneZajecia>  aktualnedata){
-        persons = new ArrayList<>();
-        boolean nowy = true;
-        String nowydzien = " ";
+        try {
+            persons = new ArrayList<>();
+            boolean nowy = true;
+            String nowydzien = " ";
 
 
-int dni = 0;
-        for (AktualneTask.AktualneZajecia aky: aktualnedata) {
-            Log.e("TAG", "----------------"+aky.przedmiot);
+            int dni = 0;
+            for (AktualneTask.AktualneZajecia aky : aktualnedata) {
+                Log.e("TAG", "----------------" + aky.przedmiot);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Calendar c = Calendar.getInstance();
-            c.getTime();
-            c.add(Calendar.DATE, dni);  // number of days to add
-            String dt = sdf.format(c.getTime());  // dt is now the new date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Calendar c = Calendar.getInstance();
+                c.getTime();
+                c.add(Calendar.DATE, dni);  // number of days to add
+                String dt = sdf.format(c.getTime());  // dt is now the new date
 
                 if (aky.przedmiot.contains("BRAK")) {
-                    persons.add(new Lesson("Brak", "Brak ", "Brak ", "Brak", "Brak", "Brak", "Brak", "Brak", "Brak", "Brak", "Brak ", true,dt));
+                    persons.add(new Lesson("Brak", "Brak ", "Brak ", "Brak", "Brak", "Brak", "Brak", "Brak", "Brak", "Brak", "Brak ", true, dt));
 
                     dni++;
-                  //  Log.e("TAG", "TTTTTIME-------SI------------------------------------------OPOPOPOPOPO---"+dt);
+                    //  Log.e("TAG", "TTTTTIME-------SI------------------------------------------OPOPOPOPOPO---"+dt);
 
                 } else {
                     if (aky.GodzinaRoz.substring(0, 10).contains(nowydzien)) {
@@ -97,15 +100,25 @@ int dni = 0;
                         nowydzien = aky.GodzinaRoz.substring(0, 10);
                     }
 
-                    persons.add(new Lesson(aky.wykladowca, aky.budynek, aky.przedmiot, aky.GodzinaRoz, aky.GodzinaZak, aky.typ, aky.sala, aky.dzień, aky.eta, aky.now, aky.numer, nowy,aky.GodzinaRoz.substring(0, 10)));
+                    persons.add(new Lesson(aky.wykladowca, aky.budynek, aky.przedmiot, aky.GodzinaRoz, aky.GodzinaZak, aky.typ, aky.sala, aky.dzień, aky.eta, aky.now, aky.numer, nowy, aky.GodzinaRoz.substring(0, 10)));
 
                     //Log.e("TAG", "TTTTTIME-------MS-----------------------------------------------OPOPOPOPOPO---"+aky.GodzinaRoz.substring(0, 10));
                 }
 
 
+            }
+
+        }catch (Exception e){
+
+
+            Toast.makeText(this, "Brak połączenia z internetem !",
+                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(LessonPlanActivity.this, MainActivity.class);
+            startActivity(intent);
+
+            finish();
+
         }
-
-
 
 
 
