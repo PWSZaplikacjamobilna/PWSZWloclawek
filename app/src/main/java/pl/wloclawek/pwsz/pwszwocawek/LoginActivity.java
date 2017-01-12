@@ -11,6 +11,7 @@ import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -44,6 +45,9 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -159,12 +163,21 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
 
-    public boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
+
+
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
+
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -277,6 +290,41 @@ public class LoginActivity extends AppCompatActivity  {
 
     public void polish(View view) {
         setLocale("pl");
+    }
+
+
+    public class PingTask extends AsyncTask<Void, Void, Boolean> {
+
+
+        boolean res = false;
+
+        @Override
+        protected void onPreExecute() {
+            showProgress(true);
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            res=isOnline();
+            return res;
+        }
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            if(res == true) {
+                showProgress(false);
+                mNumerView.setError(getString(R.string.error_incorrect_passwordOrpassword));
+                mNumerView.requestFocus();
+            }else{
+                showProgress(false);
+                Snackbar snack= Snackbar.make(mLoginFormView,"Brak połączenia z internetem !!!",Snackbar.LENGTH_LONG);
+                snack.show();
+            }
+
+        }
+
+
+
+
     }
 
     /**
@@ -395,9 +443,12 @@ public class LoginActivity extends AppCompatActivity  {
 
 
             } else {
-                showProgress(false);
-                mNumerView.setError(getString(R.string.error_incorrect_passwordOrpassword));
-                mNumerView.requestFocus();
+
+                showProgress(true);
+                PingTask ping = new PingTask();
+                ping.execute();
+
+
             }
         }
 
