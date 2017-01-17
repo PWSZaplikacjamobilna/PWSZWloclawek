@@ -58,7 +58,7 @@
 
     <string name="schedule">Schedule</string>
     <string name="timetable">Timetable</string>
-    <string name="wheniarrive">When I arrive?</string>
+    <string name="wheniarrive">Location</string>
     <string name="planbuildings">Buildings plan</string>
     <string name="information">Information</string>
     <string name="contact">Contact</string>
@@ -146,5 +146,22 @@
     <string name="title_activity_change_conf">ChangeConf</string>
     <string name="title_activity_contact_tabbed">Contact</string>
     <string name="title_activity_information_tabbed">Information</string>
-    <string name="title_activity_temo">Map</string>
+
+
+
+
+
+    <string name="brakinternetu">No internet connection</string>
+    <string name="blednytoken">Wrong token</string>
+    <string name="error">Error</string>
+    <string name="toastaccount">There is already an account with that index number.</string>
+    <string name="sesja">Session</string>
+    <string name="dyzury">Office Hours</string>
+    <string name="organizacja">Organization of the year</string>
+    <string name="brak">No lessons</string>
+    <string name="loading">Loading ...</string>
+    <string name="close">Close</string>
+    <string name="addNotification">There was a change of plan!</string>
+    <string name="addNotification2">Change of plan on PWSZ Wloclawek</string>
+    <string name="brakzajec">No lessons</string>
 </resources>

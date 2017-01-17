@@ -148,4 +148,18 @@
     <string name="title_activity_change_conf">Yapılandırmayı Değiştir</string>
     <string name="title_activity_contact_tabbed">Temas</string>
     <string name="title_activity_information_tabbed">Bilgi</string>
+
+    <string name="brakinternetu">İnternet bağlantısı yok</string>
+    <string name="blednytoken">yanlış belirteç</string>
+    <string name="error">hata</string>
+    <string name="toastaccount">Bu endeks numarası taşıyan bir hesap zaten var.</string>
+    <string name="sesja">oturum</string>
+    <string name="dyzury">Ofis Saatleri</string>
+    <string name="organizacja">yılın organizasyonu</string>
+    <string name="brak">HAYIR</string>
+    <string name="loading">Yükleniyor ...</string>
+    <string name="close">yakın</string>
+    <string name="addNotification">Planın bir değişiklik oldu!</string>
+    <string name="addNotification2">PWSZ Wloclawek üzerinde plan değiştirme</string>
+    <string name="brakzajec">hiçbir Sınıflar</string>
 </resources>

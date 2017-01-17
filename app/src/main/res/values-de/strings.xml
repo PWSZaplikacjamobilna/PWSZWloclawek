@@ -146,4 +146,18 @@
     <string name="title_activity_change_conf">Ändern Conf</string>
     <string name="title_activity_contact_tabbed">Kontakt</string>
     <string name="title_activity_information_tabbed">Information</string>
+
+    <string name="brakinternetu">Keine Internetverbindung</string>
+    <string name="blednytoken">Falsche Zeichen</string>
+    <string name="error">Fehler</string>
+    <string name="toastaccount">Es ist bereits ein Konto mit der Indexnummer.</string>
+    <string name="sesja">Sitzung</string>
+    <string name="dyzury">Öffnungszeiten</string>
+    <string name="organizacja">Die Organisation des Jahres</string>
+    <string name="brak">NEIN</string>
+    <string name="loading">Wird geladen ...</string>
+    <string name="close">Schließen</string>
+    <string name="addNotification">Es gab eine Änderung des Plans!</string>
+    <string name="addNotification2">Planänderung auf PWSZ Wloclawek</string>
+    <string name="brakzajec">Kein Unterricht</string>
 </resources>

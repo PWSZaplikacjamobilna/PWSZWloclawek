@@ -42,6 +42,9 @@
     <string name="selectplace">Wybierz miejsce</string>
 
 
+    <string name="title_activity_change_conf">Zmień</string>
+    <string name="pref_title_display_name">Wyświetl imię</string>
+    <string name="pref_title_system_sync_settings">Ustawienia synchroniacji systemu</string>
 
 
 
@@ -79,4 +82,19 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_contact_tabbed">Kontakt</string>
     <string name="title_activity_information_tabbed">Informacje</string>
+
+    <string name="brakinternetu">Brak połączenia z internetem</string>
+    <string name="blednytoken">Błędny token</string>
+    <string name="error">Błąd</string>
+    <string name="toastaccount">Istnieje już konto z takim numerem indeksu.</string>
+    <string name="sesja">Sesja</string>
+    <string name="dyzury">Dyżury</string>
+    <string name="organizacja">Organizacja roku</string>
+    <string name="brak">BRAK</string>
+    <string name="loading">Ładowanie ...</string>
+    <string name="close">Zamknij</string>
+    <string name="addNotification">Nastąpiła zmiana planu !</string>
+    <string name="addNotification2">Zmiana planu na stronie PWSZ Włocławek</string>
+    <string name="brakzajec">Brak Zajęć</string>
+
 </resources>
