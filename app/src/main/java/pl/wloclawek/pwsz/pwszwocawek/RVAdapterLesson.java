@@ -1,5 +1,6 @@
 package pl.wloclawek.pwsz.pwszwocawek;
 
+import android.content.res.Resources;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -67,7 +68,7 @@ public class RVAdapterLesson extends RecyclerView.Adapter<RVAdapterLesson.Person
 
         if (persons.get(i).przedmiot.contains("Brak")) {
 
-            personViewHolder.zajeciaNow.setText("Brak Zajęć");
+            personViewHolder.zajeciaNow.setText(Resources.getSystem().getString(R.string.brakzajec));
             personViewHolder.godzinaNow.setText("");
             personViewHolder.dzienNow.setText("");
             personViewHolder.etaNow.setText("");

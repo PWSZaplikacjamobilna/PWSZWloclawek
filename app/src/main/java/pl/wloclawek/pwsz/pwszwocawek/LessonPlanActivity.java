@@ -111,7 +111,7 @@ public class LessonPlanActivity extends AppCompatActivity {
         }catch (Exception e){
 
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
             Intent intent = new Intent(LessonPlanActivity.this, MainActivity.class);
             startActivity(intent);

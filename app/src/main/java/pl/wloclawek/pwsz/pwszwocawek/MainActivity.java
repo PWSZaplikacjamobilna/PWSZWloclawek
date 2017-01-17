@@ -153,10 +153,10 @@ ImageView myImgView;
 //        lo.setBackgroundResource(R.drawable.day);
 
          listView = (ListView) findViewById(R.id.listView13);
-        String[] values = new String[]{"Ładowanie ...",
-                "Ładowanie ...",
-                "Ładowanie ...",
-                "Ładowanie ...",
+        String[] values = new String[]{getString(R.string.loading),
+                getString(R.string.loading),
+                getString(R.string.loading),
+                getString(R.string.loading),
         };
 
          dzienNow = (TextView)findViewById(R.id.dzienNow);
@@ -287,7 +287,7 @@ ImageView myImgView;
 
 
 
-        builder.setNegativeButton("Zamknij", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.close), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -625,7 +625,7 @@ ImageView myImgView;
                     }
 
                 }else{
-                    etaNext.setText("ERROR");
+                    etaNext.setText(getString(R.string.error));
                 }
             }
 
@@ -715,8 +715,8 @@ ImageView myImgView;
             NotificationCompat.Builder builder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle("Nastąpiła zmiana planu !")
-                            .setContentText("Zminana planu na stronie PWSZ Włocławek");
+                            .setContentTitle(getString(R.string.addNotification))
+                            .setContentText(getString(R.string.addNotification2));
 
             Intent notificationIntent = new Intent(this, MainActivity.class);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,

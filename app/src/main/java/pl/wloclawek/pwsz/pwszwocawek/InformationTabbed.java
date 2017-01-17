@@ -91,11 +91,11 @@ public class InformationTabbed extends AppCompatActivity  {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Sesja";
+                    return getString(R.string.sesja);
                 case 1:
-                    return "Dyżury";
+                    return getString(R.string.dyzury);
                 case 2:
-                    return "Organizacja roku";
+                    return getString(R.string.organizacja);
 
             }
             return null;

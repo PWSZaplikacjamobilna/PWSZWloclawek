@@ -99,7 +99,7 @@ public class ChangePassword extends AppCompatActivity {
 
         if (!isOnline()) {
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
         }
 
@@ -316,7 +316,7 @@ public class ChangePassword extends AppCompatActivity {
                 finish();
             } else {
                 showProgress(false);
-                Toast.makeText(ChangePassword.this, "Błąd !",
+                Toast.makeText(ChangePassword.this, getString(R.string.error),
                         Toast.LENGTH_LONG).show();
             }
         }

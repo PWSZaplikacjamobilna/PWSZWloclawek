@@ -99,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!isOnline()) {
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
         }
 
@@ -369,7 +369,7 @@ public class RegisterActivity extends AppCompatActivity {
             showProgress(false);
             if(jest){
                 showProgress(false);
-                Toast.makeText(RegisterActivity.this, "Istnieje już konto z takim numerem indeksu.",
+                Toast.makeText(RegisterActivity.this, getString(R.string.toastaccount),
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
@@ -385,7 +385,7 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             } else {
                 showProgress(false);
-                Toast.makeText(RegisterActivity.this, "Błąd !",
+                Toast.makeText(RegisterActivity.this, getString(R.string.error),
                         Toast.LENGTH_LONG).show();
             }
         }

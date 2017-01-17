@@ -91,7 +91,7 @@ public class AllEvents extends AppCompatActivity {
 
         } catch (Exception e) {
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(AllEvents.this, MainActivity.class);

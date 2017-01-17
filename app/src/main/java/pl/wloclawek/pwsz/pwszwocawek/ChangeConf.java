@@ -60,7 +60,7 @@ public class ChangeConf extends AppCompatActivity {
 
         if (!isOnline()) {
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
         }
 
@@ -262,7 +262,7 @@ String password;
                 Log.e("---po------- numerrrr: " ,"--"+mNumer);
                 Log.e("--po--------ten: " ,"--"+mToken);
                 Log.e("--po----- password: " ,"--"+password);
-                Toast.makeText(ChangeConf.this, "Błędny token.",
+                Toast.makeText(ChangeConf.this, getString(R.string.blednytoken),
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
@@ -278,7 +278,7 @@ String password;
                 finish();
             } else {
                 showProgress(false);
-                Toast.makeText(ChangeConf.this, "Błąd !",
+                Toast.makeText(ChangeConf.this, getString(R.string.error),
                         Toast.LENGTH_LONG).show();
             }
         }

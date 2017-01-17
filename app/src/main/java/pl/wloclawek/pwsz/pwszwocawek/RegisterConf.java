@@ -60,7 +60,7 @@ public class RegisterConf extends AppCompatActivity {
 
         if (!isOnline()) {
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
         }
 
@@ -252,7 +252,7 @@ public class RegisterConf extends AppCompatActivity {
             showProgress(false);
             if(jest){
                 showProgress(false);
-                Toast.makeText(RegisterConf.this, "Błędny token.",
+                Toast.makeText(RegisterConf.this, getString(R.string.blednytoken),
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
@@ -268,7 +268,7 @@ public class RegisterConf extends AppCompatActivity {
                 finish();
             } else {
                 showProgress(false);
-                Toast.makeText(RegisterConf.this, "Błąd !",
+                Toast.makeText(RegisterConf.this, getString(R.string.error),
                         Toast.LENGTH_LONG).show();
             }
         }

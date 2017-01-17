@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity  {
         Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
         if(!isOnline()){
 
-            Toast.makeText(this, "Brak połączenia z internetem !",
+            Toast.makeText(this, getString(R.string.brakinternetu),
                     Toast.LENGTH_LONG).show();
         }
 
@@ -323,7 +323,7 @@ public class LoginActivity extends AppCompatActivity  {
                 mNumerView.requestFocus();
             }else{
                 showProgress(false);
-                Snackbar snack= Snackbar.make(mLoginFormView,"Brak połączenia z internetem !!!",Snackbar.LENGTH_LONG);
+                Snackbar snack= Snackbar.make(mLoginFormView,getString(R.string.brakinternetu),Snackbar.LENGTH_LONG);
                 snack.show();
             }
 

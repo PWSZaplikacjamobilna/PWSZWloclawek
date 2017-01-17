@@ -249,7 +249,7 @@ public class SchoolPlanmechanikow extends Fragment  {
 
 
 
-        builder.setNegativeButton("Zamknij", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.close), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
