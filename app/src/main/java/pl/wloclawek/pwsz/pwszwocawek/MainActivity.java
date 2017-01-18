@@ -612,7 +612,7 @@ ImageView myImgView;
                 budynekN = aktualnedata[next].budynek;
                 wykNext.setText(aktualnedata[next].wykladowca);
 
-// numer dodatkowy ====================9465
+// numer dodatkowy ====================9465,99113
                 if (aktualnedata.length >1 ) {
 
                     String znak2 = aktualnedata[next].eta.substring(0, 1);
