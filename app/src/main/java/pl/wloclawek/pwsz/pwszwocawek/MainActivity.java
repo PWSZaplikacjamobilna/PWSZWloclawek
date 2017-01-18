@@ -139,16 +139,10 @@ ImageView myImgView;
             public void onClick(View view) {
                 if(salaN!=null){
 
-if(budynekN.equals("Mechaników 3"))
-{
+
     int id = getResources().getIdentifier("s"+salaN.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
     openDialog(salaN,id,budynekN);
-}
-else
-{
-    int id = getResources().getIdentifier("z"+salaN.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
-    openDialog(salaN,id,budynekN);
-}
+
 
                 }
             }
