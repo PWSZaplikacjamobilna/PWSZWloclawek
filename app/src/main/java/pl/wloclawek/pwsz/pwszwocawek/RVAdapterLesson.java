@@ -68,7 +68,8 @@ public class RVAdapterLesson extends RecyclerView.Adapter<RVAdapterLesson.Person
 
         if (persons.get(i).przedmiot.contains("Brak")) {
 
-            personViewHolder.zajeciaNow.setText("Brak zajęć");
+            personViewHolder.zajeciaNow.setText(R.string.brakzajec);
+            personViewHolder.zajeciaNow.setText("                                      "+personViewHolder.zajeciaNow.getText());
             personViewHolder.godzinaNow.setText("");
             personViewHolder.dzienNow.setText("");
             personViewHolder.etaNow.setText("");

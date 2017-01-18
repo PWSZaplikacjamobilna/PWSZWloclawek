@@ -541,7 +541,7 @@ ImageView myImgView;
 
 
 
-          zajeciaNow.setText("                                             Brak");
+          zajeciaNow.setText("                                         "+getString(R.string.brakzajec));
 
             dzienNow.setText("");
 
