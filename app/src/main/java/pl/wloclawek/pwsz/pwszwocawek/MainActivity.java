@@ -567,8 +567,8 @@ ImageView myImgView;
                 salaA=aktualnedata[now].sala;
                 budynekA=aktualnedata[now].budynek;
                 wtkNow.setText(aktualnedata[now].wykladowca);
-                String znak = aktualnedata[0].eta.substring(0,1);
-                  etaNow.setText(aktualnedata[0].eta.substring(1));
+                String znak = aktualnedata[now].eta.substring(0,1);
+                  etaNow.setText(aktualnedata[now].eta.substring(1));
                   if(znak.equals("Z")){
                       etaNow.setTextColor(Color.rgb(190,76,32));
                   }
@@ -615,8 +615,8 @@ ImageView myImgView;
 // numer dodatkowy ====================9465
                 if (aktualnedata.length >1 ) {
 
-                    String znak2 = aktualnedata[1].eta.substring(0, 1);
-                    etaNext.setText(aktualnedata[1].eta.substring(1));
+                    String znak2 = aktualnedata[next].eta.substring(0, 1);
+                    etaNext.setText(aktualnedata[next].eta.substring(1));
                     if (znak2.equals("Z")) {
                         etaNext.setTextColor(Color.rgb(190,76,32));
                     }
