@@ -139,9 +139,13 @@ ImageView myImgView;
             public void onClick(View view) {
                 if(salaN!=null){
 
-
-    int id = getResources().getIdentifier("s"+salaN.toLowerCase(),"drawable" , MainActivity.this.getPackageName());
-    openDialog(salaN,id,budynekN);
+                    if(budynekN.equals("Mechaników 3")) {
+                        int id = getResources().getIdentifier("s" + salaA.toLowerCase(), "drawable", MainActivity.this.getPackageName());
+                        openDialog(salaA, id, budynekN);
+                    }else{
+                        int id = getResources().getIdentifier("z" + salaA.toLowerCase(), "drawable", MainActivity.this.getPackageName());
+                        openDialog(salaA, id, budynekN);
+                    }
 
 
                 }
