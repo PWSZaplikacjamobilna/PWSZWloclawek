@@ -97,4 +97,5 @@
     <string name="addNotification2">Zmiana planu na stronie PWSZ Włocławek</string>
     <string name="brakzajec">Brak Zajęć</string>
 
+    <string name="title_activity_settings">Ustawienia</string>
 </resources>
