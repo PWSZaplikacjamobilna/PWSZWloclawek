@@ -248,8 +248,12 @@ ImageView myImgView;
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString("tajneCookie", "null");
             editor.commit();
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+
+
+            Intent i = getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
         } else if (id == R.id.nav_planbudynkow) {
             Intent intent = new Intent(this, SchoolPlanTabbed.class);
             startActivity(intent);
