@@ -271,6 +271,7 @@ String password;
 
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("tajneCookie", cookie);
+                editor.putString("numer", numer);
                 editor.commit();
                 Intent intent = new Intent(ChangeConf.this, MainActivity.class);
                 intent.putExtra("tajneCookie",cookie);
