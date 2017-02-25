@@ -195,15 +195,14 @@ public class AllEvents extends AppCompatActivity {
                 for (int i = 0; i < soapaktualneZajecias.getPropertyCount(); i++) {
                     SoapObject pii3 = (SoapObject) soapaktualneZajecias.getProperty(i);
 
-                    // Log.e("TAG", "faza1 Lessons  getPropertyCount Cunt  -----C---" + pii2.getPropertyCount());
-                    //Log.e("TAG", "faza1 Lessons  getAttributeCount Cunt  -----C---" + pii2.getAttributeCount());
+
 
 
                     Log.e("TAG", "faza1 Lesson1  getPropertyCount Cunt  -----C---" + pii3.getPropertyCount());
                     Log.e("TAG", "faza1 Lesson1  getAttributeCount Cunt  -----C---" + pii3.getAttributeCount());
 
 
-                    for (int t = 0; t < 10; t++) {
+                    for (int t = 0; t < 4; t++) {
                         if (pii3.getProperty(t) != null)
                             Log.e("TAG", "ooooOooO)---------------" + t + "-----" + pii3.getProperty(t).toString() + "t=" + t);
                     }
@@ -211,8 +210,8 @@ public class AllEvents extends AppCompatActivity {
                     Event new1 = new Event();
                     new1.dzienE = pii3.getProperty(0).toString().substring(0, 10);
                     new1.godzinaE = pii3.getProperty(0).toString().substring(11).substring(0, 5);
-                    new1.opisE = pii3.getProperty(8).toString();
-                    new1.nazwaE = pii3.getProperty(7).toString();
+                    new1.opisE = pii3.getProperty(1).toString();
+                    new1.nazwaE = pii3.getProperty(2).toString();
 
                     listaevent.add(new1);
 

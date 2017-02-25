@@ -440,8 +440,8 @@ ImageView myImgView;
             AktualneTask data2 = new AktualneTask();
             data2.execute();
 
-            ZmianaTask data3 = new ZmianaTask();
-            data3.execute();
+//            ZmianaTask data3 = new ZmianaTask();
+//            data3.execute();
         }
     }
 
