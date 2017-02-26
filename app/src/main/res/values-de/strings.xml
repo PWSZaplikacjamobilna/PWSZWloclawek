@@ -3,7 +3,7 @@
 
     <string name="navigation_drawer_open">Menü öffnen</string>
     <string name="navigation_drawer_close">Menü schließen</string>
-
+    <string name="terminarz">Zeitplan</string>
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_login">Anmeldung</string>
     <string name="home">Hauptseite</string>

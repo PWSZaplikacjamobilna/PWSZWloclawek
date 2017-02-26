@@ -10,7 +10,7 @@
     <string name="plan">Plan zajęć</string>
     <string name="schoolplantabbed">Plan budynków</string>
     <string name="powiadomienia">Powiadomienia o zmianie planu</string>
-
+    <string name="terminarz">Terminarz</string>
     <string name="tokenInfo">Token został wysalny na maila :(index@pwsz.wloclawek.pl)</string>
     <string name="token">Token</string>
     <string name="zmien">Zmień hasło</string>

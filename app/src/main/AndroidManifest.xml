@@ -72,10 +72,20 @@
         <activity android:name=".ChangeConf" />
         <activity
             android:name=".LessonPlanActivity"
-            android:label="@string/plan" />
+            android:label="@string/plan"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+            </activity>
         <activity android:name=".EventAdd" />
         <activity android:name=".AllEvents"
-            />
+            android:label="@string/terminarz"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
         <activity
             android:name=".ContactTabbed"
             android:label="@string/title_activity_contact_tabbed"
