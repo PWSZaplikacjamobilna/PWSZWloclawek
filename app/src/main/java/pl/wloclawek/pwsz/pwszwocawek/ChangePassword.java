@@ -306,8 +306,7 @@ public class ChangePassword extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
-                Toast.makeText(ChangePassword.this, mNumer,
-                        Toast.LENGTH_LONG).show();
+
 
                 Intent intent = new Intent(ChangePassword.this, ChangeConf.class);
                 intent.putExtra("haslo",mPassword);

@@ -266,8 +266,7 @@ String password;
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
-                Toast.makeText(ChangeConf.this, cookie,
-                        Toast.LENGTH_LONG).show();
+
 
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("tajneCookie", cookie);

@@ -7,6 +7,7 @@
     <string name="powiadomienia">Değişim takvimi bildirimi</string>
     <string name="terminarz">Tarife</string>
     <string name="dodajnowy">Olay eklemek</string>
+    <string name="ustawdate">Tarihi ayarlamak</string>
     <string name="zmienhaslo">Şifrenizi değiştirmek</string>
     <string name="action_settings">Ayarlar</string>
     <string name="title_activity_login">Oturum aç</string>

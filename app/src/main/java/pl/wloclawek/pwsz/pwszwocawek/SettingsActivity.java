@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import java.util.Locale;
 

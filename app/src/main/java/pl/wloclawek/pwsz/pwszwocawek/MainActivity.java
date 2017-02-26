@@ -196,8 +196,7 @@ ImageView myImgView;
         listView.setAdapter(adapter);
 
         cookieFromPref = sharedPref.getString("tajneCookie", "null");
-        Toast.makeText(this, cookieFromPref,
-                Toast.LENGTH_LONG).show();
+
 
 
         LoopApp data2 = new LoopApp();
@@ -713,8 +712,7 @@ ImageView myImgView;
         protected void onPostExecute(final Boolean success) {
             try {
                 if (!resultData.equals("null")) {
-                    Toast.makeText(MainActivity.this, resultData,
-                            Toast.LENGTH_LONG).show();
+
                     Log.e("TAG", "ZMIANA ====================" + resultData);
                     addNotification();
                 } else {

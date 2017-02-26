@@ -69,8 +69,7 @@ public class AllEvents extends AppCompatActivity {
 //        akt.execute();
         sharedPref = getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         cookieFromPref = sharedPref.getString("tajneCookie", "null");
-        Toast.makeText(this, cookieFromPref,
-                Toast.LENGTH_LONG).show();
+
 
 
         EventTask task = new EventTask();

@@ -19,6 +19,7 @@
     <string name="plan">Lesson Plan</string>
     <string name="zmien">Change password</string>
     <string name="niepam">Forgot your password?</string>
+    <string name="ustawdate">Set date</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Index number</string>
     <string name="prompt_password">Password</string>

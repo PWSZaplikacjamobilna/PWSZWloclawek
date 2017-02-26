@@ -373,8 +373,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
-                Toast.makeText(RegisterActivity.this, cookie,
-                        Toast.LENGTH_LONG).show();
+
 
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("numer", cookie);

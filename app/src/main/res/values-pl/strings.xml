@@ -86,7 +86,7 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_contact_tabbed">Kontakt</string>
     <string name="title_activity_information_tabbed">Informacje</string>
-
+    <string name="ustawdate">Ustaw datę</string>
     <string name="brakinternetu">Brak połączenia z internetem</string>
     <string name="blednytoken">Błędny token</string>
     <string name="error">Błąd</string>

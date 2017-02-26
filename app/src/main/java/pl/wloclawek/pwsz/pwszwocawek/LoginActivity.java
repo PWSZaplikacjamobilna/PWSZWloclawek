@@ -146,8 +146,7 @@ public class LoginActivity extends AppCompatActivity  {
 
         cookieFromPref = sharedPref.getString("tajneCookie","null");
 
-        Toast.makeText(this,"Cookie"+ cookieFromPref,
-                Toast.LENGTH_LONG).show();
+
         Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
         if(!isOnline()){
 
@@ -436,8 +435,7 @@ public class LoginActivity extends AppCompatActivity  {
 
             mAuthTask = null;
             if (success) {
-                Toast.makeText(LoginActivity.this, numer,
-                        Toast.LENGTH_LONG).show();
+
 
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("tajneCookie", cookie);

@@ -83,8 +83,7 @@ public class AddToEvent extends AppCompatActivity {
                                 btnDatePicker.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                                 data=year+"-"+(monthOfYear+1)+"-"+dayOfMonth+" ";
-                                Toast.makeText(AddToEvent.this, data,
-                                        Toast.LENGTH_LONG).show();
+
                                 change = true;
                             }
                         }, mYear, mMonth, mDay);
@@ -111,8 +110,7 @@ public class AddToEvent extends AppCompatActivity {
 
                                 btnTimePicker.setText(hourOfDay + ":" + minute);
                                 czas = hourOfDay + ":" + minute;
-                                Toast.makeText(AddToEvent.this, data,
-                                        Toast.LENGTH_LONG).show();
+
                             }
                         }, mHour, mMinute, false);
                 timePickerDialog.show();
@@ -131,7 +129,7 @@ public class AddToEvent extends AppCompatActivity {
                 AddTask add = new AddTask();
                 add.execute();}
                 else {
-                    Toast.makeText(AddToEvent.this, "Set date",
+                    Toast.makeText(AddToEvent.this, R.string.ustawdate,
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -247,8 +245,7 @@ public class AddToEvent extends AppCompatActivity {
         @Override
         protected void onPostExecute(final Boolean success) {
             showProgress(false);
-            Toast.makeText(AddToEvent.this, dataT,
-                    Toast.LENGTH_LONG).show();
+
             Intent intent = new Intent(AddToEvent.this, AllEvents.class);
             startActivity(intent);
             finish();

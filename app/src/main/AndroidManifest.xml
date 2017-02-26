@@ -112,13 +112,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
             </activity>
-        <activity android:name=".EventAdd"
-            android:label="@string/dodajnowy"
-            android:parentActivityName=".AllEvents">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AllEvents"/>
-        </activity>
         <activity android:name=".AllEvents"
             android:label="@string/terminarz"
             android:parentActivityName=".MainActivity">

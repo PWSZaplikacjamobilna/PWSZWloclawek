@@ -256,8 +256,7 @@ public class RegisterConf extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
             if (success) {
-                Toast.makeText(RegisterConf.this, cookie,
-                        Toast.LENGTH_LONG).show();
+
 
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("tajneCookie", cookie);

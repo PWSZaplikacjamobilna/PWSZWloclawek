@@ -63,8 +63,7 @@ public class LessonPlanActivity extends AppCompatActivity {
         akt.execute();
         sharedPref = getSharedPreferences("tajnaPWSZ", MODE_PRIVATE);
         cookieFromPref = sharedPref.getString("tajneCookie", "null");
-        Toast.makeText(this, cookieFromPref,
-                Toast.LENGTH_LONG).show();
+
 
 
     }
