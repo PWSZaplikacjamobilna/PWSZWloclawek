@@ -4,6 +4,7 @@
     <string name="navigation_drawer_open">Menü öffnen</string>
     <string name="navigation_drawer_close">Menü schließen</string>
     <string name="terminarz">Zeitplan</string>
+    <string name="dodajnowy">Veranstaltung hinzufügen</string>
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_login">Anmeldung</string>
     <string name="home">Hauptseite</string>
@@ -13,6 +14,9 @@
     <string name="tokenInfo">-Token wurde auf E-Mail senden: (index@pwsz.wloclawek.pl)</string>
     <string name="token">Zeichen</string>
     <string name="plan">Zeitplan</string>
+    <string name="zmienhaslo">Ihr Passwort ändern</string>
+    <string name="potwierdzzmiane">Änderung bestätigen</string>
+    <string name="potwierdzrejestracje">Passwort bestätigen</string>
     <string name="zmien">Kennwort ändern</string>
     <string name="niepam">Sie haben Ihr Passwort vergessen?</string>
     <!-- Strings related to login -->
