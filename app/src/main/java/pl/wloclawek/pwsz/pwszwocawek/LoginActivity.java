@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity  {
         cookieFromPref = sharedPref.getString("tajneCookie","null");
 
 
-        Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
+        Log.i("TAG", "COOKIE ---------------- " + cookieFromPref);
 
 
 
