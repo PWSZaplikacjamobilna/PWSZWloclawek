@@ -148,11 +148,7 @@ public class LoginActivity extends AppCompatActivity  {
 
 
         Log.i("TAG", "COOKIE ------------------------------------------------------- " + cookieFromPref);
-        if(!isOnline()){
 
-            Toast.makeText(this, getString(R.string.brakinternetu),
-                    Toast.LENGTH_LONG).show();
-        }
 
 
         if(!cookieFromPref.equals("null")){
